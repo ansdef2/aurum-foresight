@@ -1,0 +1,40 @@
+@startuml
+title Aurum Foresight System — архитектура
+skinparam componentStyle rectangle
+actor "Аналитик / жюри" as user
+package "Web" {
+  [Caddy (HTTPS)] as caddy
+  [Интерфейс (React)] as ui
+  [FastAPI] as api
+}
+package "Конвейер запроса" {
+  [Разбор запроса\n(LLM expand)] as expand
+  [Сбор источников\nOpenAlex · arXiv · Google News EN/RU] as discover
+  [Кандидаты\n(LLM extract + склейка синонимов)] as cands
+  [Доказательная база\n+ GitHub · Википедия] as evidence
+  [Признаки\n(app/features.py)] as feats
+  [Детектор\n(логистическая модель)] as det
+  [Отчёт\n(LLM report по источникам)] as rep
+}
+database "PostgreSQL\njobs · documents · http_cache · llm_log" as pg
+package "Офлайн" {
+  [Датасет + негативы] as ds
+  [build_training_set → train → evaluate] as train
+}
+user --> caddy
+caddy --> ui
+ui --> api
+api --> expand
+expand --> discover
+discover --> cands
+cands --> evidence
+evidence --> feats
+feats --> det
+det --> rep
+rep --> api
+discover --> pg
+evidence --> pg
+api --> pg
+ds --> train
+train --> det : detector.json
+@enduml

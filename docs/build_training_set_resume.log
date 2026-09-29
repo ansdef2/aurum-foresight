@@ -1,0 +1,75 @@
+«сегодня» для признаков: 2026-09-28 (зафиксировано AS_OF_DATE)
+всего 223, осталось 133
+Timeout (0:02:00)!
+Thread 0x00003e10 (most recent call first):
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 354 in sleep_for_retry
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 375 in sleep
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 940 in urlopen
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 942 in urlopen
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 696 in send
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 784 in send
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 651 in request
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 671 in get
+  File "C:\II\weak-signals\app\http.py", line 66 in get
+  File "C:\II\weak-signals\app\http.py", line 93 in get_json
+  File "C:\II\weak-signals\app\sources.py", line 141 in openalex_recent
+  File "C:\II\weak-signals\app\sources.py", line 260 in <lambda>
+  File "C:\II\weak-signals\app\sources.py", line 253 in safe
+  File "C:\II\weak-signals\app\sources.py", line 260 in collect_evidence
+  File "C:\Program Files\Python312\Lib\concurrent\futures\thread.py", line 59 in run
+  File "C:\Program Files\Python312\Lib\concurrent\futures\thread.py", line 93 in _worker
+  File "C:\Program Files\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Program Files\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Program Files\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x000075a0 (most recent call first):
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 354 in sleep_for_retry
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 375 in sleep
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 940 in urlopen
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 942 in urlopen
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 696 in send
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 784 in send
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 651 in request
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 671 in get
+  File "C:\II\weak-signals\app\http.py", line 66 in get
+  File "C:\II\weak-signals\app\http.py", line 93 in get_json
+  File "C:\II\weak-signals\app\sources.py", line 141 in openalex_recent
+  File "C:\II\weak-signals\app\sources.py", line 260 in <lambda>
+  File "C:\II\weak-signals\app\sources.py", line 253 in safe
+  File "C:\II\weak-signals\app\sources.py", line 260 in collect_evidence
+  File "C:\Program Files\Python312\Lib\concurrent\futures\thread.py", line 59 in run
+  File "C:\Program Files\Python312\Lib\concurrent\futures\thread.py", line 93 in _worker
+  File "C:\Program Files\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Program Files\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Program Files\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x000074ec (most recent call first):
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 354 in sleep_for_retry
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\util\retry.py", line 375 in sleep
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 940 in urlopen
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\urllib3\connectionpool.py", line 942 in urlopen
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\adapters.py", line 696 in send
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 784 in send
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 651 in request
+  File "C:\Users\\u0421\u0435\u0440\u0433\u0435\u0439\AppData\Roaming\Python\Python312\site-packages\requests\sessions.py", line 671 in get
+  File "C:\II\weak-signals\app\http.py", line 66 in get
+  File "C:\II\weak-signals\app\http.py", line 93 in get_json
+  File "C:\II\weak-signals\app\sources.py", line 141 in openalex_recent
+  File "C:\II\weak-signals\app\sources.py", line 260 in <lambda>
+  File "C:\II\weak-signals\app\sources.py", line 253 in safe
+  File "C:\II\weak-signals\app\sources.py", line 260 in collect_evidence
+  File "C:\Program Files\Python312\Lib\concurrent\futures\thread.py", line 59 in run
+  File "C:\Program Files\Python312\Lib\concurrent\futures\thread.py", line 93 in _worker
+  File "C:\Program Files\Python312\Lib\threading.py", line 1012 in run
+  File "C:\Program Files\Python312\Lib\threading.py", line 1075 in _bootstrap_inner
+  File "C:\Program Files\Python312\Lib\threading.py", line 1032 in _bootstrap
+
+Thread 0x00006888 (most recent call first):
+  File "C:\Program Files\Python312\Lib\threading.py", line 355 in wait
+  File "C:\Program Files\Python312\Lib\threading.py", line 655 in wait
+  File "C:\Program Files\Python312\Lib\concurrent\futures\_base.py", line 243 in as_completed
+  File "C:\II\weak-signals\scripts\build_training_set.py", line 97 in main
+  File "C:\II\weak-signals\scripts\build_training_set.py", line 107 in <module>
+  File "<frozen runpy>", line 88 in _run_code
+  File "<frozen runpy>", line 229 in run_module
+  File "<string>", line 4 in <module>

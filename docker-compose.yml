@@ -1,0 +1,66 @@
+services:
+  db:
+    image: postgres:16
+    environment:
+      POSTGRES_USER: ws
+      POSTGRES_PASSWORD: ws
+      POSTGRES_DB: ws
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U ws -d ws"]
+      interval: 5s
+      retries: 20
+    restart: unless-stopped
+
+  api:
+    build: .
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://ws:ws@db:5432/ws
+      AS_OF_DATE: ""   # боевой сервис всегда работает с реальной датой, даже если AS_OF_DATE задана в .env для обучения
+    expose:
+      - "8000"
+    volumes:
+      - ./data/model:/srv/data/model:ro
+      - ./certs:/srv/certs:ro
+    depends_on:
+      db:
+        condition: service_healthy
+    restart: unless-stopped
+
+  # HTTPS: Caddy сам выпускает сертификат Let's Encrypt (A-запись домена должна указывать на этот сервер)
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    depends_on:
+      - api
+    ports:
+      - "80:80"
+      - "443:443"
+    environment:
+      WS_DOMAIN: ${WS_DOMAIN}
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile:ro
+      - caddy_data:/data
+      - caddy_config:/config
+
+  # Обучение и оценка: docker compose --profile tools run --rm tools python -m scripts.train
+  tools:
+    build: .
+    profiles: ["tools"]
+    env_file: .env
+    environment:
+      DATABASE_URL: postgresql+psycopg://ws:ws@db:5432/ws
+    volumes:
+      - ./data:/srv/data
+      - ./docs:/srv/docs
+      - ./certs:/srv/certs:ro
+    depends_on:
+      db:
+        condition: service_healthy
+
+volumes:
+  pgdata:
+  caddy_data:
+  caddy_config:

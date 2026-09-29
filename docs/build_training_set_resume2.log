@@ -1,0 +1,135 @@
+«сегодня» для признаков: 2026-09-28 (зафиксировано AS_OF_DATE)
+всего 223, осталось 133
+[1/133] LLM trading agents benchmark: ошибок 0
+[2/133] Know Your Agent: ошибок 0
+[3/133] bank deposit tokens: ошибок 0
+[4/133] speculative decoding flash memory: ошибок 0
+[5/133] TEE attestation microcontrollers: ошибок 0
+[6/133] self-healing electronic skin: ошибок 0
+[7/133] biohybrid robot muscle: ошибок 0
+[8/133] in-sensor computing: ошибок 0
+[9/133] HASEL artificial muscles: ошибок 0
+[10/133] post-quantum cryptography banking: ошибок 0
+[11/133] vibration based predictive maintenance: ошибок 0
+[12/133] machine vision quality inspection: ошибок 0
+[13/133] SCADA systems: ошибок 0
+[14/133] manufacturing execution system: ошибок 0
+[15/133] digital twin manufacturing: ошибок 0
+[16/133] robotic process automation: ошибок 0
+[17/133] machine learning demand forecasting: ошибок 0
+[18/133] statistical process control: ошибок 0
+[19/133] finite element analysis: ошибок 0
+[20/133] industrial IoT monitoring: ошибок 0
+[21/133] advanced process control: ошибок 0
+[22/133] optical character recognition: ошибок 0
+[23/133] building management system: ошибок 0
+[24/133] industry 5.0: ошибок 0
+[25/133] smart manufacturing: ошибок 0
+[26/133] industrial metaverse: ошибок 0
+[27/133] industrial robot arms: ошибок 0
+[28/133] collaborative robots: ошибок 0
+[29/133] autonomous mobile robots warehouse: ошибок 0
+[30/133] robot vacuum cleaner: ошибок 0
+[31/133] consumer camera drones: ошибок 0
+[32/133] surgical robot: ошибок 0
+[33/133] robotic palletizing: ошибок 0
+[34/133] robot operating system: ошибок 0
+[35/133] simultaneous localization and mapping: ошибок 0
+[36/133] robotic lawn mower: ошибок 0
+[37/133] robotic welding cell: ошибок 0
+[38/133] industrial exoskeleton: ошибок 0
+[39/133] humanoid robots: ошибок 0
+[40/133] robot waiter: ошибок 0
+[41/133] robotics: ошибок 0
+[42/133] gpu training clusters: ошибок 0
+[43/133] high bandwidth memory: ошибок 0
+[44/133] infiniband networking: ошибок 0
+[45/133] cloud gpu instances: ошибок 0
+[46/133] mixed precision training: ошибок 0
+[47/133] vector database: ошибок 0
+[48/133] kubernetes machine learning: ошибок 0
+[49/133] transformer architecture: ошибок 0
+[50/133] data lake: ошибок 0
+[51/133] object storage: ошибок 0
+[52/133] cuda programming: ошибок 0
+[53/133] llm inference serving: ошибок 0
+[54/133] colocation data center: ошибок 0
+[55/133] data parallel training: ошибок 0
+[56/133] quantum computers replace gpu: ошибок 0
+[57/133] blockchain ai training data: ошибок 0
+[58/133] artificial intelligence: ошибок 0
+[59/133] contactless payments: ошибок 0
+[60/133] mobile banking: ошибок 0
+[61/133] open banking: ошибок 0
+[62/133] buy now pay later: ошибок 0
+[63/133] credit scoring machine learning: ошибок 0
+[64/133] card fraud detection: ошибок 0
+[65/133] banking chatbot: ошибок 0
+[66/133] robo advisor: ошибок 0
+[67/133] instant payments: ошибок 0
+[68/133] qr code payments: ошибок 0
+[69/133] cryptocurrency exchange: ошибок 0
+[70/133] mobile wallet: ошибок 0
+[71/133] usd stablecoins: ошибок 0
+[72/133] document verification kyc: ошибок 0
+[73/133] fingerprint authentication banking: ошибок 0
+[74/133] metaverse bank branch: ошибок 0
+[75/133] nft loyalty program: ошибок 0
+[76/133] fintech: ошибок 0
+[77/133] security information and event management: ошибок 0
+[78/133] web application firewall: ошибок 0
+[79/133] endpoint detection and response: ошибок 0
+[80/133] ddos protection: ошибок 0
+[81/133] multi factor authentication: ошибок 0
+[82/133] data loss prevention: ошибок 0
+[83/133] machine learning spam filter: ошибок 0
+[84/133] content moderation classifier: ошибок 0
+[85/133] identity and access management: ошибок 0
+[86/133] zero trust network access: ошибок 0
+[87/133] static application security testing: ошибок 0
+[88/133] captcha bot protection: ошибок 0
+[89/133] phishing awareness training: ошибок 0
+[90/133] adversarial examples: ошибок 0
+[91/133] ai cybersecurity: ошибок 0
+[92/133] smartphone npu: ошибок 0
+[93/133] fully autonomous soc: ошибок 0
+[94/133] edge video analytics: ошибок 0
+[95/133] tensorflow lite: ошибок 0
+[96/133] face unlock smartphone: ошибок 0
+[97/133] content delivery network: ошибок 0
+[98/133] wake word detection: ошибок 0
+[99/133] nvidia jetson: ошибок 0
+[100/133] int8 quantization: ошибок 0
+[101/133] predictive keyboard: ошибок 0
+[102/133] smart speaker: ошибок 0
+[103/133] lane keeping assist: ошибок 0
+[104/133] fitness tracker heart rate: ошибок 0
+[105/133] fog computing: ошибок 0
+[106/133] iot edge gateway: ошибок 0
+[107/133] blockchain iot: ошибок 0
+[108/133] edge computing: ошибок 0
+[109/133] h100 gpu cloud inference: ошибок 0
+[110/133] open source large language models: ошибок 0
+[111/133] google tpu training: ошибок 0
+[112/133] enterprise rag search: ошибок 0
+[113/133] enterprise ai copilot office: ошибок 0
+[114/133] multi-access edge computing 5g: ошибок 0
+[115/133] text to image generation: ошибок 0
+[116/133] ai coding assistant: ошибок 0
+[117/133] mobileye adas camera: ошибок 0
+[118/133] smart home security camera ai: ошибок 0
+[119/133] voice assistant siri alexa: ошибок 0
+[120/133] warehouse picking robots: ошибок 0
+[121/133] sidewalk delivery robots: ошибок 0
+[122/133] spot bitcoin etf: ошибок 0
+[123/133] agricultural spraying drones: ошибок 0
+[124/133] iso 20022 migration: ошибок 0
+[125/133] generative ai banking assistant: ошибок 0
+[126/133] neobank: ошибок 0
+[127/133] security orchestration automation response: ошибок 0
+[128/133] bug bounty platform: ошибок 0
+[129/133] cloud security posture management: ошибок 0
+[130/133] vulnerability management scanner: ошибок 0
+[131/133] advanced planning and scheduling: ошибок 0
+[132/133] sap s4hana erp: ошибок 0
+[133/133] vehicle routing optimization: ошибок 0

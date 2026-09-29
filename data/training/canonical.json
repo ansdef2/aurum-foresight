@@ -1,0 +1,402 @@
+{
+ "Квантово-инспирированное сжатие моделей для запуска LLM на edge-железе": {
+  "name_en": "quantum-inspired model compression",
+  "name_ru": "квантово-инспирированное сжатие моделей"
+ },
+ "Identity & access management для ИИ-агентов (agent identity, scoped permissions)": {
+  "name_en": "AI agent identity management",
+  "name_ru": "управление доступом ИИ-агентов"
+ },
+ "Автоматизированный red-teaming ИИ-моделей как услуга (continuous AI red teaming)": {
+  "name_en": "automated AI red teaming",
+  "name_ru": "автоматизированный red teaming ИИ"
+ },
+ "Сканеры безопасности MCP-серверов и защита от tool poisoning": {
+  "name_en": "MCP server security",
+  "name_ru": "безопасность MCP-серверов"
+ },
+ "CAD-native «engineering intelligence»: ИИ-суррогаты физики + генеративное проектирование деталей под производимость": {
+  "name_en": "physics AI surrogate models",
+  "name_ru": "ИИ-суррогаты физики в инженерном проектировании"
+ },
+ "Автономные агенты закупок и цепей поставок, работающие в ERP/e-mail/мессенджерах как «цифровые снабженцы»": {
+  "name_en": "autonomous procurement agents",
+  "name_ru": "автономные агенты закупок"
+ },
+ "Проактивные ИИ-агенты теплового управления: упреждающее охлаждение ЦОД/AI-фабрик по прогнозу нагрузки, а не по факту нагрева": {
+  "name_en": "AI data center cooling control",
+  "name_ru": "ИИ-управление охлаждением ЦОД"
+ },
+ "Нейроморфные (brain-inspired) чипы для ИИ-нагрузок": {
+  "name_en": "neuromorphic chips",
+  "name_ru": "нейроморфные чипы"
+ },
+ "Оптическая коммутация каналов (OCS) в ИИ-фабриках вместо пакетных свитчей": {
+  "name_en": "optical circuit switching",
+  "name_ru": "оптическая коммутация каналов"
+ },
+ "Тиринг KV-кэша: выгрузка контекста в DRAM/NVMe/параллельные ФС": {
+  "name_en": "KV cache offloading",
+  "name_ru": "выгрузка KV-кэша"
+ },
+ "App Store для роботов: маркетплейсы навыков/движений": {
+  "name_en": "robot app store",
+  "name_ru": "магазин приложений для роботов"
+ },
+ "Массовые квадропеды-инспекторы вне «премиум»-сегмента (метро, геотермия, НПЗ)": {
+  "name_en": "quadruped inspection robots",
+  "name_ru": "роботы-квадропеды для инспекции"
+ },
+ "Сертификация безопасности физического ИИ как «узкое горлышко» внедрения": {
+  "name_en": "physical AI safety certification",
+  "name_ru": "сертификация безопасности физического ИИ"
+ },
+ "Телеоперационные данные как отдельная индустрия (data-as-a-service для роботов)": {
+  "name_en": "robot teleoperation data",
+  "name_ru": "телеоперационные данные для роботов"
+ },
+ "Защита онбординга от инъекционных атак и дипфейков (NFC-anchor + двухшаговая liveness)": {
+  "name_en": "injection attack detection KYC",
+  "name_ru": "защита KYC от инъекционных атак"
+ },
+ "NPU внутри батарейных MCU/SoC для массового IoT (не для AI PC)": {
+  "name_en": "microcontroller NPU",
+  "name_ru": "NPU в микроконтроллерах"
+ },
+ "Гибридные event-based сенсоры зрения в серийном автопроме": {
+  "name_en": "event-based vision sensor automotive",
+  "name_ru": "событийные сенсоры зрения в автомобилях"
+ },
+ "Орбитальный edge-компьютинг: инференс на спутниках": {
+  "name_en": "satellite onboard AI inference",
+  "name_ru": "инференс ИИ на спутниках"
+ },
+ "Федеративное обучение как инфраструктура «суверенного» приватного развёртывания": {
+  "name_en": "federated learning platform",
+  "name_ru": "федеративное обучение"
+ },
+ "LLM-файрволы на сетевом/edge-уровне (AI runtime gateway)": {
+  "name_en": "LLM firewall",
+  "name_ru": "LLM-файрвол"
+ },
+ "«Самозалечивающаяся» защита от prompt injection для агентных систем": {
+  "name_en": "prompt injection defense",
+  "name_ru": "защита от prompt injection"
+ },
+ "Автоматизация AI-governance и compliance под EU AI Act (AI-GRC как код)": {
+  "name_en": "AI governance compliance platform",
+  "name_ru": "платформы AI governance"
+ },
+ "Дифференциально-приватные синтетические данные как контроль безопасности обучения ИИ": {
+  "name_en": "differentially private synthetic data",
+  "name_ru": "дифференциально-приватные синтетические данные"
+ },
+ "Конфиденциальный инференс в TEE с удалённой аттестацией и подписанными «receipts»": {
+  "name_en": "confidential AI inference",
+  "name_ru": "конфиденциальный инференс ИИ"
+ },
+ "Статистические водяные знаки для ТЕКСТА LLM под требования EU AI Act": {
+  "name_en": "LLM text watermarking",
+  "name_ru": "водяные знаки для текста LLM"
+ },
+ "Robotics foundation models, обучаемые на данных внутри действующих заводов (а не в лабораториях/на публичных датасетах)": {
+  "name_en": "robotics foundation models",
+  "name_ru": "фундаментальные модели для роботов"
+ },
+ "Vision foundation models для контроля качества, где задача задаётся естественным языком (без разметки под каждый дефект)": {
+  "name_en": "vision foundation model quality inspection",
+  "name_ru": "визуальные фундаментальные модели для контроля качества"
+ },
+ "«Робот-геолог»: сенсорная фьюжн-платформа (гиперспектр + XRF + LIBS + 3D) с ML для поиска и оценки руды": {
+  "name_en": "AI mineral exploration",
+  "name_ru": "ИИ-разведка полезных ископаемых"
+ },
+ "Агентный ИИ, действующий внутри стека OT (PLC/SCADA/MES/ERP) с журналируемыми действиями и «approval gate» оператора": {
+  "name_en": "agentic AI industrial control",
+  "name_ru": "ИИ-агенты в промышленной автоматизации"
+ },
+ "Адаптивная автономная сварка: нейросетевое зрение вместо предварительного сканирования и репрограммирования робота": {
+  "name_en": "autonomous welding robots",
+  "name_ru": "автономная роботизированная сварка"
+ },
+ "ИИ-операторы виртуальных электростанций: автоматическое трейдинг-планирование BESS на нескольких рынках": {
+  "name_en": "AI virtual power plant",
+  "name_ru": "ИИ для виртуальных электростанций"
+ },
+ "Wafer-scale нового поколения: 3D-стек SRAM/DRAM поверх пластины": {
+  "name_en": "wafer-scale 3D stacked memory",
+  "name_ru": "wafer-scale чипы с 3D-памятью"
+ },
+ "ИИ-компиляторы и автоматическая оптимизация инференса как отдельная категория": {
+  "name_en": "AI inference compiler",
+  "name_ru": "компиляторы для ИИ-инференса"
+ },
+ "Малые модульные реакторы (SMR) как выделенный источник питания ИИ-ЦОД": {
+  "name_en": "small modular reactors data centers",
+  "name_ru": "малые модульные реакторы для ЦОД"
+ },
+ "Суверенные ИИ-облака, работающие в полностью отключённом (disconnected/air-gapped) режиме": {
+  "name_en": "air-gapped sovereign AI cloud",
+  "name_ru": "суверенное ИИ-облако без подключения к сети"
+ },
+ "Дексterity-кисти как самостоятельный компонентный рынок (не часть гуманоида)": {
+  "name_en": "dexterous robotic hands",
+  "name_ru": "ловкие роботизированные кисти"
+ },
+ "Роевая робототехника выходит из лаборатории (сортировка, полевые работы)": {
+  "name_en": "swarm robotics",
+  "name_ru": "роевая робототехника"
+ },
+ "Специализированный edge-кремний под инференс VLA-моделей на борту робота": {
+  "name_en": "VLA inference chip robots",
+  "name_ru": "чипы для инференса VLA-моделей"
+ },
+ "Голосовые ИИ-агенты для взыскания и обслуживания долга на развивающихся рынках": {
+  "name_en": "voice AI debt collection",
+  "name_ru": "голосовые ИИ-агенты для взыскания"
+ },
+ "ИИ-native банковские ядра (core banking OS с агентами внутри)": {
+  "name_en": "AI-native core banking",
+  "name_ru": "ИИ-native банковское ядро"
+ },
+ "Ончейн-скоринг и рейтинги для необеспеченного/недообеспеченного кредитования": {
+  "name_en": "onchain credit scoring",
+  "name_ru": "ончейн кредитный скоринг"
+ },
+ "Стейблкоины локальных валют (не-USD) и ончейн-FX между корридорами": {
+  "name_en": "local currency stablecoins",
+  "name_ru": "стейблкоины в национальных валютах"
+ },
+ "Федеративное обучение для межбанковского AML/антифрода (без обмена сырыми данными)": {
+  "name_en": "federated learning anti-money laundering",
+  "name_ru": "федеративное обучение для AML"
+ },
+ "Аналоговые compute-in-memory чипы для edge-инференса": {
+  "name_en": "analog compute-in-memory",
+  "name_ru": "аналоговые вычисления в памяти"
+ },
+ "Нейроморфные edge-процессоры, встраиваемые в стандартные EDA/дизайн-потоки": {
+  "name_en": "neuromorphic processor IP",
+  "name_ru": "нейроморфные процессоры для встраиваемых систем"
+ },
+ "Оркестрация Edge AI на парках из тысяч устройств (control plane для edge-флотов)": {
+  "name_en": "edge AI fleet orchestration",
+  "name_ru": "оркестрация edge AI"
+ },
+ "Фотонные (оптические) процессоры инференса для компактных SWaP-ограниченных систем": {
+  "name_en": "photonic AI processor",
+  "name_ru": "фотонные процессоры для ИИ"
+ },
+ "Machine unlearning как средство ремедиации рисков модели (удаление данных/поведения без переобучения)": {
+  "name_en": "machine unlearning",
+  "name_ru": "машинное разобучение"
+ },
+ "Интерпретируемость как операционный защитный контроль (interpretability-based safeguards)": {
+  "name_en": "interpretability AI safeguards",
+  "name_ru": "интерпретируемость как защита ИИ"
+ },
+ "Криптографическая верификация трафика агентов (Web Bot Auth, signed agents)": {
+  "name_en": "Web Bot Auth",
+  "name_ru": "аутентификация ИИ-агентов Web Bot Auth"
+ },
+ "Криптографическая подпись моделей и AI-SBOM (провенанс цепочки поставок моделей)": {
+  "name_en": "AI model signing SBOM",
+  "name_ru": "подпись моделей и AI-SBOM"
+ },
+ "Мониторинг chain-of-thought для детекции обмана и «scheming» моделей": {
+  "name_en": "chain-of-thought monitoring",
+  "name_ru": "мониторинг цепочки рассуждений"
+ },
+ "Foundation-модели промышленных временных рядов (S-E-F-C: setpoint/effort/feedback/context) и предобучающие корпуса заводских данных": {
+  "name_en": "industrial time series foundation model",
+  "name_ru": "фундаментальные модели промышленных временных рядов"
+ },
+ "Акустическая диагностика оборудования на edge: слияние звука, вибрации и режима работы без облака": {
+  "name_en": "acoustic machine diagnostics",
+  "name_ru": "акустическая диагностика оборудования"
+ },
+ "ИИ-управление процессами в полупроводниковом фабе и новые ИИ-сенсоры процесса (плазменная спектроскопия, in-line метрология)": {
+  "name_en": "AI semiconductor process control",
+  "name_ru": "ИИ-управление техпроцессом в полупроводниках"
+ },
+ "Edge-to-cloud оркестрация инференса (телеком-грид, on-device offload)": {
+  "name_en": "edge cloud inference orchestration",
+  "name_ru": "оркестрация инференса между устройством и облаком"
+ },
+ "Ёмкостно-ориентированный инференс: CXL-пулы памяти и LPDDR вместо HBM": {
+  "name_en": "CXL memory pooling inference",
+  "name_ru": "пулы памяти CXL для инференса"
+ },
+ "Децентрализованные / распределённые сети инференса": {
+  "name_en": "decentralized inference network",
+  "name_ru": "децентрализованные сети инференса"
+ },
+ "Орбитальные дата-центры / инференс в космосе": {
+  "name_en": "orbital data centers",
+  "name_ru": "орбитальные дата-центры"
+ },
+ "Фотонные/оптические процессоры для инференса (вычисления светом)": {
+  "name_en": "optical computing AI inference",
+  "name_ru": "оптические вычисления для ИИ"
+ },
+ "Дешёвые массовые автономные подводные аппараты как «постоянная сеть» океана": {
+  "name_en": "low-cost autonomous underwater vehicles",
+  "name_ru": "дешёвые автономные подводные аппараты"
+ },
+ "Страхование роботов и андеррайтинг по телеметрии; RaaS-контракты с SLA по аптайму": {
+  "name_en": "robot insurance telemetry",
+  "name_ru": "страхование роботов"
+ },
+ "Тактильно-обусловленные VLA-модели (touch-in-the-loop манипуляция)": {
+  "name_en": "tactile VLA models",
+  "name_ru": "тактильные VLA-модели"
+ },
+ "Эгоцентрическое человеческое видео как «дешёвый» источник обучающих данных (human-to-robot transfer)": {
+  "name_en": "egocentric video robot learning",
+  "name_ru": "эгоцентрическое видео для обучения роботов"
+ },
+ "Purpose-Bound Money (PBM) — программируемые целевые/условные деньги": {
+  "name_en": "purpose bound money",
+  "name_ru": "целевые программируемые деньги"
+ },
+ "Браузерно-нативные автономные ИИ-агенты комплаенса (KYC/AML «агентная рабочая сила»)": {
+  "name_en": "AI compliance agents KYC",
+  "name_ru": "ИИ-агенты комплаенса"
+ },
+ "Машинные микроплатежи по HTTP 402 (оплата за API-вызов, стриминговые платежи)": {
+  "name_en": "HTTP 402 micropayments",
+  "name_ru": "микроплатежи HTTP 402"
+ },
+ "Переиспользуемые ZK-верифицируемые credentials для KYC (zk-KYC)": {
+  "name_en": "zero-knowledge KYC",
+  "name_ru": "zk-KYC"
+ },
+ "Протоколы авторизации платежей ИИ-агентов (x402 / AP2 / ACP / MPP)": {
+  "name_en": "AI agent payments protocol",
+  "name_ru": "протоколы платежей ИИ-агентов"
+ },
+ "Страхование ответственности за действия ИИ-агентов (новый класс полиса)": {
+  "name_en": "AI agent liability insurance",
+  "name_ru": "страхование ответственности ИИ-агентов"
+ },
+ "Токенизированные паи денежных фондов (MMF) как мобильное обеспечение": {
+  "name_en": "tokenized money market funds",
+  "name_ru": "токенизированные фонды денежного рынка"
+ },
+ "Агентные (multi-step) AI-workflow, исполняемые локально на NPU ПК": {
+  "name_en": "on-device AI agents NPU",
+  "name_ru": "ИИ-агенты на NPU ПК"
+ },
+ "Дообучение и мульти-LoRA персонализация прямо на смартфоне": {
+  "name_en": "on-device LoRA fine-tuning",
+  "name_ru": "дообучение LoRA на смартфоне"
+ },
+ "Локальные SLM-рантаймы как «анти-Big-Tech» альтернатива на ноутбуках и смартфонах": {
+  "name_en": "local small language models",
+  "name_ru": "локальные малые языковые модели"
+ },
+ "Маршрутизирующий слой «устройство ↔ облако» как отдельный продукт (hybrid inference routing)": {
+  "name_en": "hybrid inference routing",
+  "name_ru": "гибридная маршрутизация инференса"
+ },
+ "Сертифицированная защита от отравления памяти агентов и RAG-хранилищ (memory poisoning defense)": {
+  "name_en": "agent memory poisoning defense",
+  "name_ru": "защита от отравления памяти агентов"
+ },
+ "Сканирование бэкдоров в open-weight LLM «в масштабе» (backdoored model detection)": {
+  "name_en": "LLM backdoor detection",
+  "name_ru": "обнаружение бэкдоров в LLM"
+ },
+ "LLM-генерация кода ПЛК на IEC 61131-3 Structured Text с замыканием на компилятор и формальную верификацию": {
+  "name_en": "LLM PLC code generation",
+  "name_ru": "генерация кода ПЛК языковыми моделями"
+ },
+ "Агентная генерация технологической документации: P&ID и схемы процессов из текстового описания в машиночитаемом DEXPI": {
+  "name_en": "AI P&ID generation",
+  "name_ru": "генерация P&ID схем с помощью ИИ"
+ },
+ "Нейроморфные/событийные edge-чипы для непрерывного мониторинга промышленного оборудования (мВт-класс, без облака)": {
+  "name_en": "neuromorphic industrial monitoring",
+  "name_ru": "нейроморфный мониторинг оборудования"
+ },
+ "Самообучающиеся контуры управления: RL прямо на промышленном контроллере/в живом цеху (а не в симуляторе)": {
+  "name_en": "reinforcement learning industrial control",
+  "name_ru": "обучение с подкреплением в промышленном управлении"
+ },
+ "Федеративное обучение между площадками/предприятиями: модели учатся на данных нескольких заводов без их передачи": {
+  "name_en": "federated learning manufacturing",
+  "name_ru": "федеративное обучение на производстве"
+ },
+ "3D-стековая память-вычислитель как альтернатива HBM (3DIMC, стековый DRAM)": {
+  "name_en": "3D stacked DRAM compute",
+  "name_ru": "3D-стековая память с вычислениями"
+ },
+ "Аналоговые вычисления в памяти (analog in-memory computing)": {
+  "name_en": "analog in-memory computing",
+  "name_ru": "аналоговые вычисления в памяти"
+ },
+ "Внутрикристальное микрофлюидное охлаждение (каналы, вытравленные в кремнии)": {
+  "name_en": "microfluidic chip cooling",
+  "name_ru": "микрофлюидное охлаждение чипов"
+ },
+ "Кремний, спроектированный под агентный ИИ (длинный контекст, KV-cache, low-latency decode)": {
+  "name_en": "agentic AI inference chip",
+  "name_ru": "чипы для агентного ИИ"
+ },
+ "Сверхпроводящие / криогенные вычисления для ИИ-ЦОД": {
+  "name_en": "superconducting computing AI",
+  "name_ru": "сверхпроводящие вычисления для ИИ"
+ },
+ "Simulation-first стеки с zero-shot переносом (обучение полностью в симуляции)": {
+  "name_en": "sim-to-real zero-shot transfer",
+  "name_ru": "перенос из симуляции в реальность"
+ },
+ "«Мягкие робо-клетки»: физический интеллект, вшитый в сам материал": {
+  "name_en": "soft robotic materials",
+  "name_ru": "мягкие робоматериалы"
+ },
+ "Медицинские микророботы, доходящие до клиники": {
+  "name_en": "medical microrobots",
+  "name_ru": "медицинские микророботы"
+ },
+ "Know Your Agent (KYA) — верифицируемая идентичность и делегированные полномочия ИИ-агентов": {
+  "name_en": "Know Your Agent",
+  "name_ru": "Know Your Agent"
+ },
+ "Бенчмарки и стресс-тесты LLM-агентов для трейдинга (в т.ч. состязательные рынки)": {
+  "name_en": "LLM trading agents benchmark",
+  "name_ru": "бенчмарки торговых LLM-агентов"
+ },
+ "Депозитные токены банков на публичных блокчейнах": {
+  "name_en": "bank deposit tokens",
+  "name_ru": "депозитные токены банков"
+ },
+ "Confidential computing на слабых edge-устройствах (TEE + удалённая аттестация на Cortex-M)": {
+  "name_en": "TEE attestation microcontrollers",
+  "name_ru": "доверенная среда исполнения на микроконтроллерах"
+ },
+ "In-sensor / processing-in-pixel вычисления (инференс внутри пиксельной матрицы)": {
+  "name_en": "in-sensor computing",
+  "name_ru": "вычисления внутри сенсора"
+ },
+ "Спекулятивный декодинг с выгрузкой веса во флеш-память смартфона": {
+  "name_en": "speculative decoding flash memory",
+  "name_ru": "спекулятивное декодирование с флеш-памятью"
+ },
+ "Биогибридные приводы на живой мышечной ткани": {
+  "name_en": "biohybrid robot muscle",
+  "name_ru": "биогибридные мышечные приводы"
+ },
+ "Самовосстанавливающиеся материалы и «sense-healing» электронная кожа": {
+  "name_en": "self-healing electronic skin",
+  "name_ru": "самовосстанавливающаяся электронная кожа"
+ },
+ "Электрогидравлические искусственные мышцы (HASEL) вместо редукторных приводов": {
+  "name_en": "HASEL artificial muscles",
+  "name_ru": "искусственные мышцы HASEL"
+ },
+ "Постквантовая криптография в финансовой инфраструктуре (приоритизация миграции)": {
+  "name_en": "post-quantum cryptography banking",
+  "name_ru": "постквантовая криптография в банках"
+ }
+}

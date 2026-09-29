@@ -1,0 +1,14 @@
+{$WS_DOMAIN} {
+	encode gzip zstd
+	# поиск идёт до 17 минут, но интерфейс опрашивает статус короткими запросами
+	reverse_proxy api:8000 {
+		transport http {
+			response_header_timeout 120s
+		}
+	}
+	header {
+		X-Content-Type-Options nosniff
+		Referrer-Policy strict-origin-when-cross-origin
+		-Server
+	}
+}

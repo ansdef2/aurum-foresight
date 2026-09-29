@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="12 12 96 96" role="img" aria-label="Aurum Foresight System">
+  <!-- Знак: звезда из двух квадратов (0° и 45°), три орбиты (вертикальная и ±60°), зрачок в центре -->
+  <defs>
+    <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#7A5B14"/>
+      <stop offset=".28" stop-color="#C9A13B"/>
+      <stop offset=".5" stop-color="#FFF1BF"/>
+      <stop offset=".72" stop-color="#B8912E"/>
+      <stop offset="1" stop-color="#7A5B14"/>
+    </linearGradient>
+  </defs>
+  <g fill="url(#foil)">
+    <rect x="22" y="22" width="76" height="76" rx="14"/>
+    <rect x="22" y="22" width="76" height="76" rx="14" transform="rotate(45 60 60)"/>
+  </g>
+  <g fill="none" stroke="#121B27" stroke-width="8">
+    <ellipse cx="60" cy="60" rx="15" ry="40"/>
+    <ellipse cx="60" cy="60" rx="15" ry="40" transform="rotate(60 60 60)"/>
+    <ellipse cx="60" cy="60" rx="15" ry="40" transform="rotate(-60 60 60)"/>
+  </g>
+  <circle cx="60" cy="60" r="15" fill="#121B27"/>
+  <circle cx="60" cy="60" r="10.5" fill="url(#foil)"/>
+  <circle cx="60" cy="60" r="5.5" fill="#121B27"/>
+</svg>

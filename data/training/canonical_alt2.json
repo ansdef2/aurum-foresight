@@ -1,0 +1,98 @@
+{
+ "Квантово-инспирированное сжатие моделей для запуска LLM на edge-железе": {
+  "name_en": "quantum-inspired tensor network model compression edge",
+  "name_ru": "тензорное сжатие моделей для edge"
+ },
+ "NPU внутри батарейных MCU/SoC для массового IoT (не для AI PC)": {
+  "name_en": "battery powered IoT SoC with NPU",
+  "name_ru": "SoC с NPU для маломощных IoT-устройств"
+ },
+ "Аналоговые compute-in-memory чипы для edge-инференса": {
+  "name_en": "analog compute-in-memory chip edge inference",
+  "name_ru": "аналоговые чипы вычислений в памяти для инференса на устройстве"
+ },
+ "In-sensor / processing-in-pixel вычисления (инференс внутри пиксельной матрицы)": {
+  "name_en": "processing-in-pixel in-sensor inference",
+  "name_ru": "вычисления в пикселе внутри сенсора"
+ },
+ "Identity & access management для ИИ-агентов (agent identity, scoped permissions)": {
+  "name_en": "AI agent identity and access management scoped permissions",
+  "name_ru": "идентификация и права доступа ИИ-агентов"
+ },
+ "LLM-файрволы на сетевом/edge-уровне (AI runtime gateway)": {
+  "name_en": "LLM firewall runtime gateway",
+  "name_ru": "межсетевой экран для LLM на сетевом уровне"
+ },
+ "Machine unlearning как средство ремедиации рисков модели (удаление данных/поведения без переобучения)": {
+  "name_en": "machine unlearning without retraining",
+  "name_ru": "удаление данных из модели без переобучения"
+ },
+ "Мониторинг chain-of-thought для детекции обмана и «scheming» моделей": {
+  "name_en": "chain-of-thought monitoring deception scheming",
+  "name_ru": "мониторинг рассуждений моделей для выявления обмана"
+ },
+ "Проактивные ИИ-агенты теплового управления: упреждающее охлаждение ЦОД/AI-фабрик по прогнозу нагрузки, а не по факту нагрева": {
+  "name_en": "predictive liquid cooling control AI factories",
+  "name_ru": "упреждающее управление жидкостным охлаждением AI-фабрик"
+ },
+ "Vision foundation models для контроля качества, где задача задаётся естественным языком (без разметки под каждый дефект)": {
+  "name_en": "natural language prompt defect inspection vision model",
+  "name_ru": "контроль дефектов по текстовому описанию без разметки"
+ },
+ "Акустическая диагностика оборудования на edge: слияние звука, вибрации и режима работы без облака": {
+  "name_en": "acoustic vibration edge diagnostics equipment",
+  "name_ru": "акустическая и вибрационная диагностика оборудования на edge"
+ },
+ "Самообучающиеся контуры управления: RL прямо на промышленном контроллере/в живом цеху (а не в симуляторе)": {
+  "name_en": "reinforcement learning on PLC live plant",
+  "name_ru": "RL на промышленном контроллере в действующем цехе"
+ },
+ "Тиринг KV-кэша: выгрузка контекста в DRAM/NVMe/параллельные ФС": {
+  "name_en": "KV cache tiering DRAM NVMe",
+  "name_ru": "многоуровневый KV-кэш DRAM NVMe"
+ },
+ "ИИ-компиляторы и автоматическая оптимизация инференса как отдельная категория": {
+  "name_en": "automatic inference optimization compiler kernels",
+  "name_ru": "автоматическая оптимизация инференса и генерация ядер"
+ },
+ "Ёмкостно-ориентированный инференс: CXL-пулы памяти и LPDDR вместо HBM": {
+  "name_en": "CXL LPDDR capacity-oriented inference instead of HBM",
+  "name_ru": "инференс на CXL и LPDDR вместо HBM"
+ },
+ "Внутрикристальное микрофлюидное охлаждение (каналы, вытравленные в кремнии)": {
+  "name_en": "in-chip microfluidic channels silicon cooling",
+  "name_ru": "микрофлюидные каналы в кремнии"
+ },
+ "App Store для роботов: маркетплейсы навыков/движений": {
+  "name_en": "humanoid robot skill marketplace",
+  "name_ru": "маркетплейс навыков для гуманоидных роботов"
+ },
+ "Дексterity-кисти как самостоятельный компонентный рынок (не часть гуманоида)": {
+  "name_en": "20 DoF dexterous hand supplier humanoid",
+  "name_ru": "ловкие кисти с 20 степенями свободы"
+ },
+ "Тактильно-обусловленные VLA-модели (touch-in-the-loop манипуляция)": {
+  "name_en": "touch in the loop vision language action",
+  "name_ru": "тактильные vision-language-action модели"
+ },
+ "Электрогидравлические искусственные мышцы (HASEL) вместо редукторных приводов": {
+  "name_en": "electrohydraulic HASEL actuators",
+  "name_ru": "электрогидравлические приводы HASEL"
+ },
+ "Голосовые ИИ-агенты для взыскания и обслуживания долга на развивающихся рынках": {
+  "name_en": "voice agents collections emerging markets banks",
+  "name_ru": "голосовые агенты для взыскания в банках развивающихся рынков"
+ },
+ "Стейблкоины локальных валют (не-USD) и ончейн-FX между корридорами": {
+  "name_en": "non-USD local currency stablecoin onchain FX",
+  "name_ru": "стейблкоины национальных валют и ончейн-FX"
+ },
+ "Машинные микроплатежи по HTTP 402 (оплата за API-вызов, стриминговые платежи)": {
+  "name_en": "x402 pay per API call HTTP 402 payments",
+  "name_ru": "оплата за API-вызов по HTTP 402"
+ },
+ "Постквантовая криптография в финансовой инфраструктуре (приоритизация миграции)": {
+  "name_en": "post-quantum migration financial infrastructure cryptographic inventory",
+  "name_ru": "миграция финансовой инфраструктуры на постквантовую криптографию"
+ }
+}
