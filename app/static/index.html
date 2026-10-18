@@ -6,201 +6,346 @@
 <title>Aurum Foresight System</title>
 <meta name="description" content="Aurum Foresight System — поиск слабых технологических сигналов в научных публикациях, новостях и репозиториях.">
 <link rel="icon" type="image/svg+xml" href="/static/logo.svg">
+<link rel="preload" href="/static/fonts/manrope-cyrillic-wght-normal.woff2" as="font" type="font/woff2" crossorigin>
 <script>try{if(localStorage.getItem("aurum-theme")==="dark")document.documentElement.dataset.theme="dark"}catch(e){}</script>
 <style>
-/* Montserrat (OFL) — локально, без внешних CDN */
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:300;src:url(/static/fonts/montserrat-cyrillic-300-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:300;src:url(/static/fonts/montserrat-latin-300-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:400;src:url(/static/fonts/montserrat-cyrillic-400-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:400;src:url(/static/fonts/montserrat-latin-400-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:500;src:url(/static/fonts/montserrat-cyrillic-500-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:500;src:url(/static/fonts/montserrat-latin-500-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:600;src:url(/static/fonts/montserrat-cyrillic-600-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:600;src:url(/static/fonts/montserrat-latin-600-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:700;src:url(/static/fonts/montserrat-cyrillic-700-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:700;src:url(/static/fonts/montserrat-latin-700-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:800;src:url(/static/fonts/montserrat-cyrillic-800-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
-@font-face{font-family:Montserrat;font-style:normal;font-display:swap;font-weight:800;src:url(/static/fonts/montserrat-latin-800-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
+/* Manrope (OFL), переменный 200–800 — локально, без внешних CDN */
+@font-face{font-family:Manrope;font-style:normal;font-display:swap;font-weight:200 800;src:url(/static/fonts/manrope-cyrillic-wght-normal.woff2) format("woff2");unicode-range:U+0301,U+0400-045F,U+0490-0491,U+04B0-04B1,U+2116}
+@font-face{font-family:Manrope;font-style:normal;font-display:swap;font-weight:200 800;src:url(/static/fonts/manrope-latin-wght-normal.woff2) format("woff2");unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD}
 
-/* Брендбук: Пергамент #EFEBDF, Чернила #121B27, Ночь #080C12, Латунь #A8811F, Фольга #7A5B14 → #FFF1BF */
-:root{--bg:#EFEBDF;--surface:#F7F4EC;--surface2:#E7E2D3;--rule:#D8D1BE;--rule2:#C4BBA3;
---ink:#121B27;--ink2:#444C58;--muted:#63676E;--accent:#A8811F;--accent-text:#7A5B14;
---panel:#121B27;--on-panel:#EFEBDF;--on-panel2:#B5B2A8;--btn:#121B27;--on-btn:#EFEBDF;
---risk:#9E3B2C;--header:rgba(239,235,223,.92);color-scheme:light}
-:root[data-theme="dark"]{--bg:#080C12;--surface:#121B27;--surface2:#1A2433;--rule:#253041;--rule2:#344053;
---ink:#EFEBDF;--ink2:#B5B2A8;--muted:#8C8E95;--accent:#A8811F;--accent-text:#D1AE52;
---panel:#1A2433;--on-panel:#EFEBDF;--on-panel2:#B5B2A8;--btn:#A8811F;--on-btn:#080C12;
---risk:#E07A62;--header:rgba(8,12,18,.92);color-scheme:dark}
+/* Брендбук: Пергамент #EFEBDF, Чернила #121B27, Ночь #080C12, Латунь #A8811F, Фольга #7A5B14 → #FFF1BF.
+   Стадии 1–5 — «шкала индекса» брендбука: одна латунная гамма от светлой к тёмной. */
+:root{--bg:#EFEBDF;--surface:#F8F6F0;--surface2:#E9E4D6;--rule:#DAD3C1;--rule2:#C4BBA3;
+--ink:#121B27;--ink2:#444C58;--muted:#63676E;--accent:#A8811F;--accent-text:#7A5B14;--accent-wash:rgba(168,129,31,.12);
+--panel:#121B27;--on-panel:#EFEBDF;--on-panel2:#B5B2A8;--panel-label:#D1AE52;--panel-rule:rgba(239,235,223,.12);
+--btn:#A8811F;--on-btn:#121B27;--risk:#9E3B2C;--header:rgba(239,235,223,.94);
+--s1:#E3D29E;--s2:#C7AC5B;--s3:#A7811E;--s4:#886C18;--s5:#5E4A0D;--edge:rgba(18,27,39,.28);
+--track:#E2DCCB;--shadow:0 1px 0 rgba(18,27,39,.04);color-scheme:light}
+:root[data-theme="dark"]{--bg:#080C12;--surface:#111925;--surface2:#1A2433;--rule:#243042;--rule2:#344053;
+--ink:#EFEBDF;--ink2:#B5B2A8;--muted:#8C8E95;--accent:#A8811F;--accent-text:#D1AE52;--accent-wash:rgba(209,174,82,.12);
+--panel:#1A2433;--on-panel:#EFEBDF;--on-panel2:#B5B2A8;--panel-label:#D1AE52;--panel-rule:rgba(239,235,223,.1);
+--btn:#A8811F;--on-btn:#080C12;--risk:#E07A62;--header:rgba(8,12,18,.94);--edge:rgba(239,235,223,.22);
+--track:#243042;--shadow:none;color-scheme:dark}
 *{box-sizing:border-box}
-html{background:var(--bg)}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.6 Montserrat,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
-font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased}
+html{background:var(--bg);overflow-x:clip}
+body{margin:0;background:var(--bg);color:var(--ink);font:15.5px/1.7 Manrope,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;
+font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;font-feature-settings:"tnum" 1}
 a{color:var(--accent-text)}
 b,strong{font-weight:800}
 :focus-visible{outline:2px solid var(--accent);outline-offset:3px}
-.wrap{max-width:1180px;margin:0 auto;padding:0 20px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 24px}
+.sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
-/* типографика брендбука: светлый заголовок + жирное ключевое слово, разреженные капсы */
-.eyebrow{font-size:12px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent-text)}
-.caps{font-size:11.5px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;color:var(--ink)}
-h1{font-size:46px;line-height:1.12;font-weight:300;margin:16px 0 18px;letter-spacing:-.01em;max-width:20ch}
-h1 b{font-weight:800}
-h2{font-size:30px;font-weight:300;line-height:1.2;margin:0 0 20px}
-h2 b{font-weight:800}
-h3{font-size:18px;font-weight:700;margin:28px 0 8px}
-.lead{color:var(--ink2);max-width:58ch;margin:0 0 28px;font-size:17px;line-height:1.75}
-.sub{color:var(--muted);font-size:13px}
-.note{color:var(--muted);font-size:13.5px}
-section.block{padding:64px 0;border-top:1px solid var(--rule)}
+/* типографика: заголовок 200 + 800, текст 400 (1,7), метка 600 разреженными капсами */
+.eyebrow{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--accent-text)}
+.label{font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:54px;line-height:1.08;font-weight:200;margin:16px 0 18px;letter-spacing:-.025em}
+h1 b,h2 b{font-weight:800;letter-spacing:-.02em}
+h2{font-size:34px;font-weight:200;line-height:1.15;margin:0 0 18px;letter-spacing:-.02em}
+h3{font-size:16px;font-weight:800;margin:0 0 10px;letter-spacing:-.005em}
+.lead{color:var(--ink2);max-width:56ch;margin:0 0 30px;font-size:17px}
+.muted{color:var(--muted)}.sub{color:var(--muted);font-size:13px;line-height:1.55}
+.mark{display:flex;align-items:center;gap:22px;justify-content:center;margin-bottom:18px}
+.mark::before,.mark::after{content:"";flex:1;max-width:240px;height:1px}
+.mark::before{background:linear-gradient(90deg,transparent,var(--accent))}
+.mark::after{background:linear-gradient(90deg,var(--accent),transparent)}
+.mark span{font-size:11px;font-weight:800;letter-spacing:.36em;text-transform:uppercase}
+.center{text-align:center}
+section.block{padding:72px 0;border-top:1px solid var(--rule)}
 
 /* шапка */
-header.top{position:sticky;top:0;z-index:20;background:var(--header);backdrop-filter:blur(10px);border-bottom:1px solid var(--rule)}
-.hd{display:flex;align-items:center;gap:22px;padding:12px 20px;max-width:1180px;margin:0 auto}
-.lockup{display:flex;align-items:center;gap:13px;text-decoration:none;color:var(--ink);flex:none}
-.lockup img{width:38px;height:38px;display:block}
+header.top{position:sticky;top:0;z-index:30;background:var(--header);backdrop-filter:blur(12px);border-bottom:1px solid var(--accent)}
+.hd{display:flex;align-items:center;gap:20px;height:64px;max-width:1240px;margin:0 auto;padding:0 24px}
+.lockup{display:flex;align-items:center;gap:12px;text-decoration:none;color:var(--ink);flex:none}
+.lockup img{width:34px;height:34px;display:block}
+.logo-dark{display:none!important}
+:root[data-theme="dark"] .logo-light{display:none!important}
+:root[data-theme="dark"] .logo-dark{display:block!important}
 .wm{display:flex;flex-direction:column;align-items:center;line-height:1}
-.wm .t1{font-size:13px;font-weight:400;letter-spacing:.2em;white-space:nowrap}
-.wm .t2{display:flex;align-items:center;gap:7px;width:100%;margin-top:5px;font-size:12px;font-weight:700;letter-spacing:.26em}
+.wm .t1{font-size:12.5px;font-weight:500;letter-spacing:.22em;white-space:nowrap}
+.wm .t2{display:flex;align-items:center;gap:7px;width:100%;margin-top:5px;font-size:11.5px;font-weight:800;letter-spacing:.3em}
 .wm .t2::before,.wm .t2::after{content:"";flex:1;height:1px;background:var(--accent)}
-nav.links{display:flex;gap:22px;margin-left:auto;align-items:center}
-nav.links a{color:var(--ink2);text-decoration:none;font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase}
-nav.links a:hover,nav.links a.on{color:var(--ink)}
-.theme{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:34px;height:34px;
-border:1px solid var(--rule2);color:var(--ink2)}
-.theme:hover{color:var(--ink);border-color:var(--muted);background:transparent}
+:root[data-theme="dark"] .wm{align-items:flex-start}
+:root[data-theme="dark"] .wm .t2{width:auto}
+:root[data-theme="dark"] .wm .t2::before,:root[data-theme="dark"] .wm .t2::after{display:none}
+.hd .search{max-width:440px}
+nav.links{display:flex;gap:4px;margin-left:auto;align-items:center}
+nav.links a{color:var(--ink2);text-decoration:none;font-size:11px;font-weight:700;letter-spacing:.22em;text-transform:uppercase;padding:9px 12px;border-bottom:2px solid transparent}
+nav.links a:hover{color:var(--ink)}
+nav.links a.on{color:var(--ink);border-bottom-color:var(--accent)}
+.iconbtn{all:unset;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;
+border:1px solid var(--rule2);color:var(--ink2);flex:none}
+.iconbtn:hover{color:var(--ink);border-color:var(--muted)}
+.only-sm{display:none!important}
+.hd-sm{border-top:1px solid var(--rule);padding:12px 16px}
 
-/* поиск и кнопки */
-.search{display:flex;gap:0;flex:1}
-.search input{flex:1;min-width:0;font:inherit;font-size:15px;padding:14px 16px;border:1px solid var(--rule2);border-right:0;background:var(--surface);color:var(--ink);border-radius:0}
+/* поиск */
+.search{display:flex;flex:1;min-width:0;position:relative}
+.search .ico{position:absolute;left:16px;top:50%;transform:translateY(-50%);color:var(--muted);pointer-events:none}
+.search input{flex:1;min-width:0;font:inherit;font-size:16px;padding:16px 64px 16px 46px;border:1px solid var(--rule2);border-right:0;
+background:var(--surface);color:var(--ink);border-radius:0;outline:none;transition:border-color .15s,box-shadow .15s}
+.search input:focus{border-color:var(--accent);box-shadow:inset 0 0 0 1px var(--accent)}
 .search input::placeholder{color:var(--muted)}
-.search.compact input{padding:9px 12px;font-size:14px}
+.search kbd{position:absolute;right:calc(var(--btnw,168px) + 14px);top:50%;transform:translateY(-50%);font:600 11px Manrope,sans-serif;
+color:var(--muted);border:1px solid var(--rule2);padding:2px 7px;pointer-events:none}
+.search.compact input{font-size:14px;padding:9px 44px 9px 38px}
+.search.compact .ico{left:12px}
+.search.compact kbd{right:calc(var(--btnw,112px) + 10px)}
 .search.compact button{padding:9px 16px}
-button,.btn{font:inherit;font-size:12px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;padding:15px 24px;
-border:1px solid var(--btn);background:var(--btn);color:var(--on-btn);cursor:pointer;text-decoration:none;display:inline-block;border-radius:0;
-transition:background .15s,color .15s,border-color .15s}
-button:hover,.btn:hover{background:var(--accent);border-color:var(--accent);color:#080C12}
+button,.btn{font:inherit;font-size:11.5px;font-weight:800;letter-spacing:.2em;text-transform:uppercase;padding:16px 26px;
+border:1px solid var(--btn);background:var(--btn);color:var(--on-btn);cursor:pointer;text-decoration:none;display:inline-flex;
+align-items:center;gap:10px;border-radius:0;transition:background .15s,color .15s,border-color .15s;white-space:nowrap}
+button:hover,.btn:hover{background:var(--ink);border-color:var(--ink);color:var(--bg)}
 .btn.ghost,button.ghost{background:transparent;color:var(--ink);border-color:var(--ink)}
-.btn.ghost:hover,button.ghost:hover{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.btn.ghost:hover,button.ghost:hover{background:var(--ink);color:var(--bg)}
+.btn.quiet,button.quiet{background:transparent;border-color:var(--rule2);color:var(--ink2);padding:11px 16px}
+.btn.quiet:hover,button.quiet:hover{border-color:var(--ink);color:var(--ink);background:transparent}
 button:disabled{opacity:.5;cursor:default}
-.chips{display:flex;flex-wrap:wrap;gap:8px}
-.chip{font:inherit;font-size:13px;font-weight:500;letter-spacing:0;text-transform:none;padding:7px 13px;
-border:1px solid var(--rule2);background:transparent;color:var(--ink2);cursor:pointer}
-.chip:hover{border-color:var(--accent);color:var(--ink);background:transparent}
+.chips{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.chip{all:unset;cursor:pointer;font-size:13px;font-weight:600;padding:7px 13px;border:1px solid var(--rule2);color:var(--ink2);
+display:inline-flex;align-items:center;gap:8px;line-height:1.3}
+.chip:hover{border-color:var(--accent);color:var(--ink)}
+.chip[aria-pressed="true"]{background:var(--ink);border-color:var(--ink);color:var(--bg)}
+.chip .n{font-weight:700;color:var(--muted)}
+.chip[aria-pressed="true"] .n{color:var(--bg);opacity:.7}
 .chip.static{cursor:default}
 .chip.static:hover{border-color:var(--rule2);color:var(--ink2)}
 
 /* главная */
-.hero{display:grid;grid-template-columns:1.35fr 1fr;gap:40px;align-items:center;padding:56px 0 64px}
-.hero-art svg{display:block;width:100%;max-width:380px;margin-left:auto}
-.ha-line{fill:none;stroke:var(--accent);stroke-width:1}
-.ha-orbit{fill:none;stroke:var(--muted);stroke-width:.8;opacity:.6}
-.ha-dash{fill:none;stroke:var(--accent);stroke-width:.8;stroke-dasharray:2 5;opacity:.8}
-.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:32px}
+.bleed{position:relative;overflow:hidden;width:100vw;margin-left:calc(50% - 50vw)}
+.hero{position:relative;max-width:1240px;margin:0 auto;padding:84px 24px 92px;min-height:600px;display:flex;align-items:center}
+.hero-text{position:relative;z-index:1;max-width:700px;width:100%}
+.hero h1{font-size:64px}
+.hero-art{position:absolute;top:50%;left:calc(50% + 150px);width:860px;transform:translateY(-50%);pointer-events:none}
+.hero-art svg{display:block;width:100%;height:auto}
+.ha-line{fill:none;stroke:url(#foilLine);stroke-width:1.2}
+.ha-orbit{fill:none;stroke:url(#foilLine);stroke-width:.9;opacity:.85}
+.ha-dash{fill:none;stroke:var(--muted);stroke-width:.7;stroke-dasharray:2 6;opacity:.55}
+.hero .chips{margin-top:16px}
+.hero-meta{display:flex;gap:28px;flex-wrap:wrap;margin-top:28px;padding-top:20px;border-top:1px solid var(--rule)}
+.hero-meta div{font-size:13px;color:var(--ink2)}
+.hero-meta b{display:block;font-size:22px;font-weight:300;color:var(--ink);letter-spacing:-.01em}
+.recent{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px;margin-top:22px}
+.recent a{display:block;text-decoration:none;color:var(--ink);background:var(--surface);border:1px solid var(--rule);padding:16px 18px;
+border-top:2px solid var(--ink);transition:border-color .15s}
+.recent a:hover{border-color:var(--accent);border-top-color:var(--accent)}
+.recent .q{font-weight:700;display:block;margin-bottom:6px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.pipe{display:grid;grid-template-columns:repeat(5,1fr);gap:28px;position:relative;margin-top:44px}
+.pipe::before{content:"";position:absolute;left:6px;right:6px;top:6px;height:1px;background:linear-gradient(90deg,var(--accent),var(--accent) 80%,transparent)}
+.pipe .node{width:13px;height:13px;border:1.5px solid var(--accent);background:var(--bg);transform:rotate(45deg);position:relative}
+.pipe .n{font-size:40px;font-weight:200;color:var(--accent-text);line-height:1;margin:22px 0 12px}
+.pipe h3{text-transform:uppercase;font-size:11.5px;letter-spacing:.24em}
+.pipe p{color:var(--ink2);font-size:14px;margin:0;line-height:1.65}
+.anatomy{display:grid;grid-template-columns:1.1fr 1fr;gap:56px;align-items:center}
+.anat-card{background:var(--surface);border:1px solid var(--rule);border-top:2px solid var(--ink);padding:22px 24px;box-shadow:var(--shadow)}
+.anat-row{display:grid;grid-template-columns:120px 1fr;gap:18px;align-items:center;padding:14px 0;border-bottom:1px dashed var(--rule2)}
+.anat-row:last-child{border-bottom:0}
+.anat-list{list-style:none;margin:0;padding:0;counter-reset:a}
+.anat-list li{display:grid;grid-template-columns:44px 1fr;gap:6px;padding:14px 0;border-bottom:1px dashed var(--accent)}
+.anat-list li:first-child{border-top:2px solid var(--ink)}
+.anat-list li::before{counter-increment:a;content:counter(a,decimal-leading-zero);font-size:22px;font-weight:200;color:var(--accent-text);line-height:1.2}
+.anat-list b{display:block;font-size:14.5px}
+.anat-list span{color:var(--ink2);font-size:14px}
+.pillars{display:grid;grid-template-columns:repeat(3,1fr);gap:32px;margin-top:40px}
 .pillar{border-top:1px solid var(--accent);padding-top:18px}
 .pillar:first-child{border-top:2px solid var(--ink)}
-.pillar .caps{font-weight:400;letter-spacing:.24em}
-.pillar:first-child .caps{font-weight:800}
-.pillar p{color:var(--ink2);font-size:14.5px;margin:12px 0 0;line-height:1.65}
-.steps-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:24px}
-.stp{border-top:1px dashed var(--accent);padding-top:18px}
-.stp .n{font-size:34px;font-weight:300;color:var(--accent-text);line-height:1}
-.stp .caps{margin-top:14px;display:block}
-.stp p{color:var(--ink2);font-size:14px;margin:10px 0 0;line-height:1.6}
+.pillar .k{font-size:11px;font-weight:500;letter-spacing:.32em;text-transform:uppercase}
+.pillar:first-child .k{font-weight:800}
+.pillar p{color:var(--ink2);font-size:14.5px;margin:12px 0 0}
+.two{display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:start}
 .values{display:grid;grid-template-columns:1fr 1fr;background:var(--panel);color:var(--on-panel)}
-.values>div{padding:26px 28px;border-bottom:1px solid rgba(239,235,223,.1)}
-.values>div:nth-child(odd){border-right:1px solid rgba(239,235,223,.1)}
+.values>div{padding:26px 28px;border-bottom:1px solid var(--panel-rule)}
+.values>div:nth-child(odd){border-right:1px solid var(--panel-rule)}
 .values>div:nth-last-child(-n+2){border-bottom:0}
-.values .caps{color:var(--on-panel);letter-spacing:.24em}
+.values .k{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--panel-label)}
 .values p{margin:10px 0 0;color:var(--on-panel2);font-size:14px;line-height:1.6}
-.two{display:grid;grid-template-columns:1fr 1.25fr;gap:56px;align-items:start}
 
-/* таблицы */
-.table-wrap{overflow-x:auto;background:var(--surface);border:1px solid var(--rule)}
+/* карточки, таблицы, общие элементы данных */
+.card{background:var(--surface);border:1px solid var(--rule);box-shadow:var(--shadow)}
+.card.open{border-top:2px solid var(--ink)}
+.card-h{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:16px 20px;border-bottom:1px solid var(--rule)}
+.card-b{padding:18px 20px}
 table{width:100%;border-collapse:collapse;font-size:14.5px}
-th{text-align:left;font-weight:700;color:var(--muted);font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;padding:13px 14px;border-bottom:1px solid var(--rule)}
-td{padding:14px;border-bottom:1px solid var(--rule);vertical-align:top}
+th{text-align:left;font-weight:700;color:var(--muted);font-size:10px;letter-spacing:.24em;text-transform:uppercase;padding:12px 16px;border-bottom:1px solid var(--rule);white-space:nowrap}
+th button{all:unset;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+th button:hover{color:var(--ink)}
+td{padding:14px 16px;border-bottom:1px solid var(--rule);vertical-align:top}
 tr:last-child td{border-bottom:0}
 .name{font-weight:700}
-.badge{display:inline-block;padding:4px 9px;font-size:12px;font-weight:700;letter-spacing:.06em;white-space:nowrap;border:1px solid}
+a.name{color:var(--ink);text-decoration:none}
+a.name:hover{color:var(--accent-text);text-decoration:underline}
+.badge{display:inline-flex;align-items:center;gap:7px;padding:4px 9px;font-size:11.5px;font-weight:800;letter-spacing:.06em;white-space:nowrap;border:1px solid}
 .High{background:var(--panel);color:var(--on-panel);border-color:var(--panel)}
-.High::before{content:"";display:inline-block;width:6px;height:6px;border-radius:50%;background:var(--accent);margin-right:7px;vertical-align:1px}
+.High::before{content:"";width:6px;height:6px;border-radius:50%;background:var(--accent)}
 .Med{color:var(--accent-text);border-color:var(--accent)}
 .Low{color:var(--muted);border-color:var(--rule2)}
+.tag{display:inline-flex;align-items:center;gap:7px;font-size:12.5px;font-weight:600;color:var(--ink2);white-space:nowrap}
+.sw{width:11px;height:11px;flex:none;box-shadow:inset 0 0 0 1px var(--edge)}
+.cat{display:inline-block;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;padding:3px 8px;border:1px solid var(--rule2);color:var(--ink2);white-space:nowrap}
+.cat.risk{border-color:var(--risk);color:var(--risk)}
+
+/* шкала уверенности: заливка латунью, отметки порога детектора и уровня High */
+.conf{display:grid;grid-template-columns:1fr 46px;gap:12px;align-items:center;min-width:150px}
+.meter{position:relative;height:6px;background:var(--track)}
+.meter i{position:absolute;left:0;top:0;bottom:0;background:var(--accent)}
+.meter i.low{background:var(--muted)}
+.meter .tick{position:absolute;top:-4px;bottom:-4px;width:1.5px;background:var(--ink)}
+.meter .tick.hi{background:var(--accent-text)}
+.conf .v{font-weight:800;font-size:14px;text-align:right}
 
 /* лестница зрелости */
 .ladder{display:inline-flex;align-items:flex-end;gap:3px}
-.ladder i{display:block;width:9px;border:1.5px solid var(--accent)}
+.ladder i{display:block;width:8px;border:1.5px solid var(--accent)}
 .ladder i.on{background:var(--accent)}
-.ladder.big{gap:10px}.ladder.big i{width:68px}
-.ladder-labels{display:flex;gap:10px;font-size:11.5px;color:var(--muted);margin-top:7px}
-.ladder-labels span{width:68px;text-align:center;line-height:1.25}
+.ladder.big{gap:8px}.ladder.big i{width:44px}
+.ladder-labels{display:flex;gap:8px;font-size:10.5px;color:var(--muted);margin-top:7px}
+.ladder-labels span{width:44px;text-align:center;line-height:1.25}
 
 /* прогресс */
-.progress{background:var(--surface);border:1px solid var(--rule);padding:30px;max-width:680px;margin:48px 0}
-.meter{height:3px;background:var(--rule);overflow:hidden;margin:18px 0 12px}
-.meter b{display:block;height:100%;background:var(--accent);transition:width .6s}
-.steps{list-style:none;padding:0;margin:18px 0 0}
-.steps li{display:flex;gap:16px;align-items:center;padding:12px 0;border-top:1px dashed var(--rule2);color:var(--muted)}
-.steps li:last-child{border-bottom:1px dashed var(--rule2)}
-.steps li .n{font-size:22px;font-weight:300;width:30px;line-height:1}
-.steps li.done{color:var(--ink2)}.steps li.done .n{color:var(--accent-text)}
-.steps li.now{color:var(--ink);font-weight:700}.steps li.now .n{color:var(--accent-text)}
+.page{padding:44px 0 80px}
+.prog{display:grid;grid-template-columns:1.3fr 1fr;gap:28px;margin-top:28px}
+.steps{list-style:none;margin:0;padding:0;position:relative}
+.steps li{display:grid;grid-template-columns:28px 1fr auto;gap:16px;align-items:center;padding:16px 0;color:var(--muted);position:relative}
+.steps li+li{border-top:1px dashed var(--rule2)}
+.steps .dot{width:13px;height:13px;border:1.5px solid var(--rule2);transform:rotate(45deg);margin-left:7px;background:var(--surface)}
+.steps li.done{color:var(--ink2)}.steps li.done .dot{background:var(--accent);border-color:var(--accent)}
+.steps li.now{color:var(--ink);font-weight:800}.steps li.now .dot{border-color:var(--accent);animation:pulse 1.4s ease-in-out infinite}
+.steps .st{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase}
+@keyframes pulse{50%{background:var(--accent-wash);box-shadow:0 0 0 6px var(--accent-wash)}}
+.clock{background:var(--panel);color:var(--on-panel);padding:26px 28px;display:flex;flex-direction:column;gap:14px}
+.clock .k{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--panel-label)}
+.clock .v{font-size:64px;font-weight:200;line-height:1;letter-spacing:-.02em}
+.clock .meter{background:rgba(239,235,223,.14)}
+.clock .meter .tick{background:var(--on-panel)}
+.clock .sub{color:var(--on-panel2)}
 
-/* результаты */
-.page{padding:44px 0 72px}
-.stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:28px;margin:30px 0}
-.stat{border-top:1px solid var(--accent);padding-top:16px}
-.stat:first-child{border-top:2px solid var(--ink)}
-.stat .k{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ink)}
-.stat .v{font-size:46px;font-weight:300;line-height:1.1;margin-top:10px}
-.stat button{all:unset;cursor:pointer;display:block;width:100%}
-.stat button:hover .k{color:var(--accent-text)}
-.tabs{display:flex;gap:4px;border-bottom:1px solid var(--rule);margin:34px 0 0;overflow-x:auto}
-.tab{all:unset;cursor:pointer;padding:12px 16px;color:var(--muted);border-bottom:2px solid transparent;
-font-size:11.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;white-space:nowrap}
-.tab[aria-selected=true]{color:var(--ink);border-bottom-color:var(--accent)}
-.tab:hover{background:transparent;color:var(--ink);border-color:transparent}
-.tab[aria-selected=true]:hover{border-bottom-color:var(--accent)}
-.stat button:hover{background:transparent;color:inherit}
-a.name{color:var(--ink);text-decoration:none}a.name:hover{color:var(--accent-text);text-decoration:underline}
-.tabs + .table-wrap{border-top:0}
-.foot-meta{margin-top:28px;color:var(--muted);font-size:13px;display:grid;gap:5px}
+/* выдача */
+.res-head{display:flex;justify-content:space-between;gap:28px;align-items:flex-end;flex-wrap:wrap}
+.res-head h1{margin-bottom:12px}
+.actions{display:flex;gap:10px;flex-wrap:wrap}
+.kpis{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:20px;margin:30px 0 8px}
+.kpi{border-top:1px solid var(--accent);padding-top:14px}
+.kpi:first-child{border-top:2px solid var(--ink)}
+.kpi .k{font-size:10.5px;font-weight:700;letter-spacing:.24em;text-transform:uppercase}
+.kpi .v{font-size:48px;font-weight:200;line-height:1.1;margin-top:8px;letter-spacing:-.02em}
+.kpi .h{font-size:12.5px;color:var(--muted)}
+.kpi.key{background:var(--panel);border-top:0;padding:14px 20px 16px}
+.kpi.key .k{color:var(--panel-label)}
+.kpi.key .v{color:var(--on-panel)}
+.kpi.key .h{color:var(--on-panel2)}
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--rule);margin-top:34px;overflow-x:auto}
+.tab{all:unset;cursor:pointer;padding:13px 16px;color:var(--muted);border-bottom:2px solid transparent;margin-bottom:-1px;
+font-size:11px;font-weight:800;letter-spacing:.24em;text-transform:uppercase;white-space:nowrap}
+.tab:hover{color:var(--ink)}
+.tab[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--accent)}
+.tab .n{color:var(--muted);margin-left:6px}
+.res-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;margin-top:24px;align-items:start}
+.aside{display:flex;flex-direction:column;gap:18px;position:sticky;top:84px}
+.toolbar{display:flex;gap:12px;flex-wrap:wrap;align-items:center;margin-bottom:14px}
+.filter{position:relative;flex:1;min-width:220px;max-width:320px}
+.filter input{width:100%;font:inherit;font-size:14px;padding:10px 12px 10px 36px;border:1px solid var(--rule2);background:var(--surface);color:var(--ink);border-radius:0;outline:none}
+.filter input:focus{border-color:var(--accent)}
+.filter svg{position:absolute;left:11px;top:50%;transform:translateY(-50%);color:var(--muted)}
+select{font:inherit;font-size:13.5px;font-weight:600;padding:10px 12px;border:1px solid var(--rule2);background:var(--surface);color:var(--ink);border-radius:0}
+.siglist{border-top:2px solid var(--ink);background:var(--surface);border-left:1px solid var(--rule);border-right:1px solid var(--rule)}
+.sig{display:grid;grid-template-columns:52px minmax(0,1fr) 190px 64px 20px;gap:18px;align-items:center;padding:18px 20px 18px 16px;
+border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink);transition:background .12s;position:relative}
+.sig:hover{background:var(--accent-wash)}
+.sig:first-child::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--accent)}
+.sig .rk{font-size:26px;font-weight:200;color:var(--accent-text);line-height:1}
+.sig .nm{font-weight:800;font-size:15.5px;line-height:1.35}
+.sig .en{color:var(--muted);font-size:13px}
+.sig .meta{display:flex;gap:14px;flex-wrap:wrap;margin-top:6px}
+.sig .why{color:var(--ink2);font-size:13px;margin-top:6px;line-height:1.55;overflow:hidden;display:-webkit-box;-webkit-line-clamp:1;-webkit-box-orient:vertical}
+.sig .arr{color:var(--muted);font-size:18px}
+.empty{padding:28px 20px;color:var(--muted);text-align:center;border-bottom:1px solid var(--rule)}
+.stack{display:flex;gap:2px;height:12px;margin:4px 0 14px}
+.stack i{display:block;height:100%;box-shadow:inset 0 0 0 1px var(--edge)}
+.legend-rows{display:grid;gap:8px}
+.legend-rows div{display:grid;grid-template-columns:12px 1fr auto;gap:10px;align-items:center;font-size:13px}
+.legend-rows b{font-weight:800}
+.hbar{display:grid;grid-template-columns:1fr 70px;gap:4px 10px;align-items:center;font-size:13px}
+.hbar .t{grid-column:1/-1;display:flex;justify-content:space-between;gap:8px}
+.hbar .t span:last-child{font-weight:700}
+.hbar .b{grid-column:1/-1;height:4px;background:var(--track);margin-bottom:10px}
+.hbar .b i{display:block;height:100%;background:var(--ink)}
+.kv{display:grid;grid-template-columns:auto 1fr;gap:6px 14px;font-size:13px;margin:0}
+.kv dt{color:var(--muted)}.kv dd{margin:0;font-weight:600;word-break:break-word}
+.note{border-left:3px solid var(--accent);background:var(--surface);padding:10px 14px;font-size:13px;color:var(--ink2)}
+.foot-meta{margin-top:22px;color:var(--muted);font-size:12.5px}
 
-/* инсайт */
-.doc{max-width:820px}
-.doc p{margin:0 0 12px;color:var(--ink2);line-height:1.7}
-.doc h2{margin-top:44px}
-.meta{display:flex;flex-wrap:wrap;gap:10px 22px;color:var(--ink2);font-size:14.5px;margin:14px 0 26px;align-items:center}
-.bars{display:grid;grid-template-columns:minmax(0,1fr) 220px;gap:10px 18px;align-items:center;font-size:14px;margin-top:14px}
-.bar-track{position:relative;height:8px;background:var(--surface2)}
+/* карточка сигнала */
+.crumb{font-size:11px;font-weight:700;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;color:var(--accent-text)}
+.crumb:hover{text-decoration:underline}
+.ins-grid{display:grid;grid-template-columns:minmax(0,1fr) 360px;gap:44px;margin-top:28px;align-items:start}
+.prose p{margin:0 0 14px;color:var(--ink2);max-width:68ch}
+.prose h2{margin:36px 0 12px;font-size:28px}
+.prose h2:first-child{margin-top:0}
+.prose h3{margin:22px 0 6px}
+.keyfig{background:var(--panel);color:var(--on-panel);padding:22px 24px}
+.keyfig .k{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--panel-label)}
+.keyfig .v{font-size:68px;font-weight:200;line-height:1;margin:12px 0 16px;letter-spacing:-.03em}
+.keyfig .v small{font-size:28px;margin-left:2px}
+.keyfig .meter{background:rgba(239,235,223,.14)}
+.keyfig .meter .tick{background:var(--on-panel)}
+.keyfig .scale{display:flex;justify-content:space-between;font-size:11px;color:var(--on-panel2);margin-top:8px}
+.side-sec{border-top:1px solid var(--rule);padding-top:16px}
+.bars{display:grid;grid-template-columns:minmax(0,1fr) 200px;gap:10px 18px;align-items:center;font-size:14px;margin-top:14px}
+.bar-track{position:relative;height:8px;background:var(--track)}
 .bar-track::after{content:"";position:absolute;left:50%;top:-3px;bottom:-3px;width:1px;background:var(--rule2)}
 .bar-track b{position:absolute;top:0;height:8px}
 .legend{display:flex;gap:18px;font-size:12.5px;color:var(--ink2);margin-top:8px;flex-wrap:wrap}
-.legend i{display:inline-block;width:14px;height:8px;margin-right:7px;vertical-align:0}
-.flag{border-left:3px solid var(--accent);background:var(--surface);color:var(--ink);padding:12px 16px;font-size:14px;margin:10px 0}
-.err{border-left:3px solid var(--risk);background:var(--surface);color:var(--ink);padding:16px 18px;margin:48px 0}
-.trust{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border:1px solid var(--rule);margin-top:14px}
-.trust>div{padding:18px;border-right:1px solid var(--rule)}
-.trust>div:last-child{border-right:0}
-.trust .lv{font-size:34px;font-weight:300;color:var(--accent-text);line-height:1}
-.trust p{font-size:13.5px;margin:10px 0 0;color:var(--ink2);line-height:1.55}
+.legend i{display:inline-block;width:14px;height:8px;margin-right:7px}
+.srcs{border-top:2px solid var(--ink);background:var(--surface);border-left:1px solid var(--rule);border-right:1px solid var(--rule)}
+.src{display:grid;grid-template-columns:44px minmax(0,1fr);gap:16px;padding:16px 18px;border-bottom:1px solid var(--rule)}
+.tl{width:36px;height:36px;display:flex;align-items:center;justify-content:center;font-size:18px;font-weight:300;border:1px solid var(--accent);color:var(--accent-text)}
+.tl.A{background:var(--panel);border-color:var(--panel);color:var(--on-panel)}
+.src .t{font-weight:700;line-height:1.45}
+.src .m{font-size:12.5px;color:var(--muted);margin-top:3px}
+.src .s{font-size:13.5px;color:var(--ink2);margin-top:6px}
+.pager{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.pager a{display:block;text-decoration:none;color:var(--ink);border:1px solid var(--rule2);padding:12px 14px;font-size:13px}
+.pager a:hover{border-color:var(--accent)}
+.pager a .label{display:block;margin-bottom:4px}
+.pager a.r{text-align:right}
 
-footer.bottom{border-top:1px solid var(--rule);padding:30px 0 36px;color:var(--muted);font-size:13px}
+/* методология */
+.trust{display:grid;grid-template-columns:repeat(4,1fr);border:1px solid var(--rule);border-top:2px solid var(--ink);margin-top:14px;background:var(--surface)}
+.trust>div{padding:20px;border-right:1px solid var(--rule)}
+.trust>div:last-child{border-right:0}
+.trust .lv{font-size:44px;font-weight:200;color:var(--accent-text);line-height:1}
+.trust p{font-size:13.5px;margin:10px 0 0;color:var(--ink2);line-height:1.55}
+.limits{list-style:none;margin:0;padding:0;border-top:2px solid var(--ink)}
+.limits li{padding:14px 0;border-bottom:1px dashed var(--accent);color:var(--ink2);font-size:15px}
+.stagescale{display:grid;grid-template-columns:repeat(5,1fr);gap:2px;margin-top:16px}
+.stagescale div{padding:12px 12px 14px;font-size:13px;font-weight:600;line-height:1.35;box-shadow:inset 0 0 0 1px var(--edge)}
+.stagescale div span{display:block;font-size:22px;font-weight:200;margin-bottom:4px}
+.err{border-left:3px solid var(--risk);background:var(--surface);padding:18px 20px;margin:48px 0}
+
+footer.bottom{border-top:1px solid var(--rule);padding:30px 0 40px;color:var(--muted);font-size:13px;margin-top:20px}
 .ft{display:flex;gap:18px;align-items:center;flex-wrap:wrap}
 .ft img{width:26px;height:26px}
-.ft .caps{color:var(--ink2);font-weight:600}
+.ft .k{font-size:11px;font-weight:700;letter-spacing:.32em;text-transform:uppercase;color:var(--ink2)}
 .ft a{color:var(--muted)}
 
-@media (max-width:980px){.hero{grid-template-columns:1fr}.hero-art{display:none}.steps-grid{grid-template-columns:1fr 1fr}
-.two{grid-template-columns:1fr;gap:28px}.trust{grid-template-columns:1fr 1fr}.trust>div:nth-child(2){border-right:0}
-.trust>div:nth-child(-n+2){border-bottom:1px solid var(--rule)}}
-@media (max-width:760px){h1{font-size:32px}h2{font-size:25px}.hd{flex-wrap:wrap;gap:12px}.hd .search{order:3;flex-basis:100%}
-nav.links{gap:14px}.wm{display:none}.pillars,.stats,.values{grid-template-columns:1fr}.steps-grid{grid-template-columns:1fr}
-.values>div:nth-child(odd){border-right:0}.values div:nth-last-child(2){border-bottom:1px solid rgba(239,235,223,.1)}
-.bars{grid-template-columns:1fr}.hide-sm{display:none}.stat .v{font-size:38px}section.block{padding:44px 0}
-.ladder.big{gap:6px}.ladder.big i{width:52px}.ladder-labels{gap:6px;font-size:10.5px}.ladder-labels span{width:52px}
-.search{flex-wrap:wrap}.search input{border-right:1px solid var(--rule2);flex-basis:100%}.search button{flex:1;margin-top:8px}}
-@media (prefers-reduced-motion:reduce){.meter b{transition:none}}
+@media (max-width:1100px){.res-grid,.ins-grid{grid-template-columns:1fr}.aside{position:static}
+.kpis{grid-template-columns:repeat(2,minmax(0,1fr))}.anatomy,.two{grid-template-columns:1fr;gap:32px}}
+@media (max-width:980px){.hero{min-height:0;padding:56px 24px 64px}.hero h1{font-size:46px}
+.hero-art{left:auto;right:-320px;width:620px;opacity:.3}.pipe{grid-template-columns:1fr 1fr}.pipe::before{display:none}
+.trust{grid-template-columns:1fr 1fr}.stagescale{grid-template-columns:1fr 1fr}.prog{grid-template-columns:1fr}}
+@media (max-width:760px){body{font-size:15px}.wrap{padding:0 16px}.hd{padding:0 16px;gap:10px;height:58px}
+.hd .search,.wm,nav.links a.hide-sm{display:none}.only-sm{display:inline-flex!important}
+h1,.hero h1{font-size:34px}h2{font-size:26px}section.block{padding:48px 0}
+.pillars,.values,.pipe{grid-template-columns:1fr}.values>div:nth-child(odd){border-right:0}
+.values>div:nth-last-child(2){border-bottom:1px solid var(--panel-rule)}
+.kpi .v{font-size:38px}.search kbd{display:none}.search input{padding-right:16px}
+.search:not(.compact){flex-wrap:wrap}.search:not(.compact) input{flex-basis:100%;border-right:1px solid var(--rule2)}
+.search:not(.compact) button{flex:1;justify-content:center;margin-top:8px}.search:not(.compact) .ico{top:28px}
+.sig{grid-template-columns:36px minmax(0,1fr);gap:10px 12px}.sig .cf{grid-column:2}.sig .ld,.sig .arr{display:none}
+.bars{grid-template-columns:1fr}.trust,.stagescale{grid-template-columns:1fr}.trust>div{border-right:0;border-bottom:1px solid var(--rule)}
+.res-head{align-items:flex-start}.anat-row{grid-template-columns:1fr}
+.tab{font-size:10px;letter-spacing:.12em;padding:12px 10px}.filter{max-width:none;flex-basis:100%}.toolbar label[style]{margin-left:0!important}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
 </style>
 </head>
 <body>
@@ -210,13 +355,15 @@ nav.links{gap:14px}.wm{display:none}.pillars,.stats,.values{grid-template-column
 <script src="/static/vendor/react-dom.production.min.js"></script>
 <script src="/static/vendor/htm.umd.js"></script>
 <script>
-const { useState, useEffect } = React;
+const { useState, useEffect, useMemo, useRef } = React;
 const html = htm.bind(React.createElement);
 const THEMES = ["Индустриальный ИИ", "Роботы", "Инфраструктура ИИ", "Финтех", "Защита ИИ", "Edge AI"];
 const STAGES = ["Разбор запроса", "Сбор источников", "Выделение кандидатов", "Проверка кандидатов", "Отчёты по сигналам"];
+const STAGE_LABELS = { 1: "Концепция / исследование", 2: "Прототип / PoC", 3: "Пилот", 4: "Раннее внедрение", 5: "Массовое внедрение" };
 const LADDER = [["research", "Наука"], ["code", "Код"], ["money", "Деньги"], ["mainstream", "Массовые СМИ"], ["encyclopedia", "Энциклопедия"]];
 const LANGS = { ru: "русский", en: "английский" };
 const BUDGET_MIN = 17;
+const HIGH = 0.75;
 
 const api = async (path, opts) => {
   const r = await fetch(path, opts);
@@ -224,11 +371,40 @@ const api = async (path, opts) => {
   return r.json();
 };
 const pct = (v) => Math.round(v * 100) + "%";
-const nn = (i) => String(i + 1).padStart(2, "0");
+const nn = (i) => String(i).padStart(2, "0");
+const fmtN = (n) => Number(n || 0).toLocaleString("ru-RU");
+const day = (iso) => { if (!iso) return "—"; const d = new Date(iso + (/Z|[+-]\d\d:?\d\d$/.test(iso) ? "" : "Z")); return isNaN(d) ? iso : d.toLocaleDateString("ru-RU"); };
+const when = (iso) => { const d = new Date(iso + (/Z$/.test(iso) ? "" : "Z")); return isNaN(d) ? "" : d.toLocaleString("ru-RU", { day: "2-digit", month: "2-digit", hour: "2-digit", minute: "2-digit" }); };
+const dur = (s) => s >= 90 ? `${Math.floor(s / 60)} мин ${Math.round(s % 60)} с` : `${(Math.round(s * 10) / 10).toLocaleString("ru-RU")} с`;
 const route = () => (location.hash.replace(/^#\/?/, "") || "").split("/");
+const stageColor = (c) => `var(--s${c})`;
+
+/* порог детектора из обученной модели (GET /api/model), один раз на сессию */
+let modelPromise = null;
+function useModel() {
+  const [m, setM] = useState(null);
+  useEffect(() => { modelPromise = modelPromise || api("/api/model").catch(() => null); modelPromise.then(setM); }, []);
+  return m;
+}
+
+const Icon = {
+  search: html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.8" aria-hidden="true"><circle cx="11" cy="11" r="7" /><path d="M20 20l-3.5-3.5" /></svg>`,
+  theme: html`<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true"><circle cx="12" cy="12" r="8" /><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" /></svg>`,
+};
+
+function Meter({ p, thr, dark }) {
+  return html`<div className="meter" role="img" aria-label=${`уверенность ${pct(p)}, порог ${pct(thr)}, High от ${pct(HIGH)}`}>
+    <i className=${p < thr ? "low" : ""} style=${{ width: pct(Math.max(0, Math.min(1, p))) }}></i>
+    <b className="tick" style=${{ left: pct(thr) }} title=${"порог детектора " + pct(thr)}></b>
+    <b className="tick hi" style=${{ left: pct(HIGH) }} title="High — от 75%"></b>
+  </div>`;
+}
+const Conf = ({ p, thr }) => html`<div className="conf"><${Meter} p=${p} thr=${thr} /><span className="v">${pct(p)}</span></div>`;
+const Badge = ({ s }) => html`<span className=${"badge " + s.confidence_label}>${s.confidence_label} ${pct(s.confidence)}</span>`;
+const StageTag = ({ code, label }) => html`<span className="tag"><i className="sw" style=${{ background: stageColor(code) }}></i>${label || STAGE_LABELS[code]}</span>`;
 
 function Ladder({ value, big }) {
-  const h = big ? [18, 28, 38, 48, 58] : [7, 10, 13, 16, 19];
+  const h = big ? [16, 24, 32, 40, 48] : [7, 10, 13, 16, 19];
   const bars = html`<span className=${"ladder" + (big ? " big" : "")} role="img"
     aria-label=${"Лестница зрелости: " + (LADDER.filter(([k]) => value[k]).map(([, l]) => l).join(", ") || "нет подтверждений")}>
     ${LADDER.map(([k], i) => html`<i key=${k} className=${value[k] ? "on" : ""} style=${{ height: h[i] + "px" }}></i>`)}</span>`;
@@ -236,100 +412,132 @@ function Ladder({ value, big }) {
   return html`<div>${bars}<div className="ladder-labels">${LADDER.map(([k, l]) => html`<span key=${k}>${l}</span>`)}</div></div>`;
 }
 
-const Badge = ({ s }) => html`<span className=${"badge " + s.confidence_label}>${s.confidence_label} ${pct(s.confidence)}</span>`;
-
-function SearchBox({ initial = "", compact }) {
-  const [q, setQ] = useState(initial);
+function SearchBox({ compact, autoFocus }) {
+  const [q, setQ] = useState("");
   const [busy, setBusy] = useState(false);
   const [err, setErr] = useState("");
-  const go = async (query, force = false) => {
+  const go = async (query) => {
     if (!query || query.trim().length < 2) { setErr("Введите направление, например «Финтех»"); return; }
     setBusy(true); setErr("");
     try {
-      const r = await api("/api/search", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query, force }) });
-      location.hash = "#/job/" + r.job_id;
+      const r = await api("/api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query, force: false }) });
+      location.hash = "#/job/" + r.job_id; setQ("");
     } catch (e) { setErr("Запрос не отправлен: " + e.message); }
     setBusy(false);
   };
-  return html`<div style=${{ flex: 1, maxWidth: compact ? 520 : 760 }}>
-    <form className=${"search" + (compact ? " compact" : "")} onSubmit=${(e) => { e.preventDefault(); go(q); }}>
-      <input value=${q} onInput=${(e) => { setQ(e.target.value); setErr(""); }}
-        placeholder=${compact ? "Новое направление" : "Направление, например «перспективные решения в финтехе»"} aria-label="Технологическое направление" />
-      <button disabled=${busy}>${busy ? "Отправляю…" : "Найти сигналы"}</button>
+  return html`<div style=${{ flex: 1, minWidth: 0 }}>
+    <form className=${"search" + (compact ? " compact" : "")} onSubmit=${(e) => { e.preventDefault(); go(q); }} role="search">
+      <span className="ico">${Icon.search}</span>
+      <input data-search value=${q} autoFocus=${autoFocus} onInput=${(e) => { setQ(e.target.value); setErr(""); }}
+        placeholder=${compact ? "Новое направление" : "Направление, например «финтех»"}
+        aria-label="Технологическое направление" />
+      <kbd aria-hidden="true">/</kbd>
+      <button disabled=${busy}>${busy ? "Отправляю…" : compact ? "Найти" : "Найти сигналы"}</button>
     </form>
-    ${err && html`<div className="note" style=${{ color: "var(--risk)", marginTop: 8 }}>${err}</div>`}
-    ${!compact && html`<div className="chips" style=${{ marginTop: 16 }}>
+    ${err && html`<div className="sub" style=${{ color: "var(--risk)", marginTop: 8 }}>${err}</div>`}
+    ${!compact && html`<div className="chips"><span className="label" style=${{ marginRight: 6 }}>Темы датасета</span>
       ${THEMES.map((t) => html`<button key=${t} type="button" className="chip" onClick=${() => { setQ(t); go(t); }}>${t}</button>`)}</div>`}
   </div>`;
 }
 
 function HeroArt() {
   return html`<div className="hero-art" aria-hidden="true"><svg viewBox="0 0 340 340">
-    <circle cx="170" cy="170" r="160" className="ha-dash" />
-    <rect x="70" y="70" width="200" height="200" rx="34" className="ha-line" />
-    <rect x="70" y="70" width="200" height="200" rx="34" className="ha-line" transform="rotate(45 170 170)" />
-    <ellipse cx="170" cy="170" rx="44" ry="118" className="ha-orbit" />
-    <ellipse cx="170" cy="170" rx="44" ry="118" className="ha-orbit" transform="rotate(60 170 170)" />
-    <ellipse cx="170" cy="170" rx="44" ry="118" className="ha-orbit" transform="rotate(-60 170 170)" />
-    <defs><linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0" stopColor="#7A5B14" /><stop offset=".3" stopColor="#C9A13B" /><stop offset=".5" stopColor="#FFF1BF" />
-      <stop offset=".7" stopColor="#B8912E" /><stop offset="1" stopColor="#7A5B14" /></linearGradient></defs>
-    <circle cx="170" cy="170" r="26" fill="url(#foil)" />
+    <defs>
+      <linearGradient id="foil" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#7A5B14" /><stop offset=".3" stopColor="#C9A13B" /><stop offset=".5" stopColor="#FFF1BF" />
+        <stop offset=".7" stopColor="#B8912E" /><stop offset="1" stopColor="#7A5B14" /></linearGradient>
+      <linearGradient id="foilLine" x1="0" y1="0" x2="1" y2="1">
+        <stop offset="0" stopColor="#8A6A1E" /><stop offset=".45" stopColor="#C9A13B" /><stop offset=".55" stopColor="#E3C778" />
+        <stop offset="1" stopColor="#8A6A1E" /></linearGradient>
+    </defs>
+    <circle cx="170" cy="170" r="166" className="ha-dash" />
+    <rect x="62" y="62" width="216" height="216" rx="26" className="ha-line" />
+    <rect x="62" y="62" width="216" height="216" rx="26" className="ha-line" transform="rotate(45 170 170)" />
+    <ellipse cx="170" cy="170" rx="38" ry="112" className="ha-orbit" />
+    <ellipse cx="170" cy="170" rx="38" ry="112" className="ha-orbit" transform="rotate(60 170 170)" />
+    <ellipse cx="170" cy="170" rx="38" ry="112" className="ha-orbit" transform="rotate(-60 170 170)" />
+    <circle cx="170" cy="170" r="24" fill="url(#foil)" />
   </svg></div>`;
 }
 
 const HOW = [
   ["Разбор запроса", "Языковая модель раскладывает направление на подобласти и даёт поисковые формулировки на русском и английском."],
-  ["Сбор источников", "Научные работы OpenAlex и arXiv, новости Google News на двух языках — за последние полтора года."],
-  ["Кандидаты", "Модель выписывает из заголовков классы технологий со ссылками на документы; русские и английские синонимы склеиваются."],
-  ["Проверка", "По каждому кандидату — счётчики публикаций, новости за два года, GitHub и Википедия. 16 признаков, решение принимает детектор, а не языковая модель."],
-  ["Отчёт", "ТОП-15 с уверенностью, стадией, источниками и объяснением. Зрелые технологии, хайп и шум — отдельным списком с причиной."],
+  ["Сбор источников", "Научные работы OpenAlex и arXiv, новости Google News на двух языках за последние полтора года."],
+  ["Кандидаты", "Модель выписывает из заголовков классы технологий со ссылками на документы; синонимы склеиваются."],
+  ["Проверка", "По каждому кандидату — публикации, новости за два года, GitHub и Википедия: 16 признаков. Решает детектор, а не языковая модель."],
+  ["Отчёт", "ТОП-15 с уверенностью, стадией и источниками. Зрелые технологии, хайп и шум — отдельным списком с причиной."],
 ];
 
 function Home() {
   const [jobs, setJobs] = useState([]);
+  const m = useModel();
   useEffect(() => { api("/api/jobs").then(setJobs).catch(() => {}); }, []);
+  const thr = m ? m.gate_threshold : 0.6;
+  const st = { done: "готово", running: "выполняется", queued: "в очереди", failed: "ошибка" };
   return html`<div>
-    <div className="hero">
-      <div>
+    <div className="bleed"><div className="hero">
+      <div className="hero-text">
         <div className="eyebrow">Технологический форсайт</div>
         <h1>Находим золото в потоке <b>научных данных</b></h1>
-        <p className="lead">Введите технологическое направление. Aurum Foresight System соберёт научные публикации,
-          новости и репозитории, выделит кандидатов и отберёт 15 зарождающихся технологий — слабых сигналов.
-          Зрелые тренды, хайп и шум попадут в отдельный список с причинами исключения.</p>
+        <p className="lead">Введите направление — система соберёт научные публикации, новости и репозитории, проверит
+          каждого кандидата детектором и отберёт 15 зарождающихся технологий. Зрелое, хайп и шум уйдут в отдельный список с причиной.</p>
         <${SearchBox} />
-        <p className="note" style=${{ marginTop: 18 }}>Бюджет обработки одного запроса — ${BUDGET_MIN} минут. Страницу можно закрыть: результат сохранится по ссылке.</p>
+        <div className="hero-meta">
+          <div><b>${BUDGET_MIN} мин</b>бюджет одного запроса</div>
+          <div><b>16</b>признаков детектора</div>
+          <div><b>${m && m.metrics ? pct(m.metrics.gate.f1) : "—"}</b>F1 на незнакомой теме</div>
+          <div><b>A–D</b>доверенность источников</div>
+        </div>
       </div>
       <${HeroArt} />
-    </div>
+    </div></div>
 
-    ${jobs.length > 0 && html`<section className="block">
+    ${jobs.length > 0 && html`<section className="block" style=${{ paddingTop: 48 }}>
       <div className="eyebrow">Недавние запросы</div>
-      <div className="table-wrap" style=${{ marginTop: 18 }}><table><tbody>
-      ${jobs.map((j) => html`<tr key=${j.id}><td><a href=${"#/job/" + j.id}>${j.query}</a></td>
-        <td className="sub">${new Date(j.created_at + "Z").toLocaleString("ru-RU")}</td>
-        <td className="sub">${{ done: "готово", running: "выполняется", queued: "в очереди", failed: "ошибка" }[j.status]}</td></tr>`)}
-      </tbody></table></div></section>`}
+      <div className="recent">${jobs.slice(0, 6).map((j) => html`<a key=${j.id} href=${"#/job/" + j.id}>
+        <span className="q">${j.query}</span><span className="sub">${when(j.created_at)} · ${st[j.status] || j.status}</span></a>`)}</div>
+    </section>`}
 
     <section className="block">
-      <div className="eyebrow">Идея</div>
-      <h2 style=${{ marginTop: 14, marginBottom: 32 }}>Ценный сигнал <b>в массиве данных</b></h2>
-      <div className="pillars">
-        <div className="pillar"><div className="caps">Aurum</div><p>«Золото» по-латыни. Ценный сигнал в массиве данных — технология,
-          о которой уже есть независимые подтверждения, но ещё нет массовых СМИ и энциклопедии.</p></div>
-        <div className="pillar"><div className="caps">Foresight</div><p>Взгляд в будущее по измеримым признакам: рост публикаций
-          быстрее потока, всплеск новостей, первые раунды и новые репозитории.</p></div>
-        <div className="pillar"><div className="caps">System</div><p>Методика, у каждого вывода есть источник: дата, тип,
-          язык и уровень доверенности, а уверенность разложена на вклад признаков.</p></div>
+      <div className="center"><div className="mark"><span>Как это работает</span></div>
+        <h2>От запроса до <b>ТОП-15</b></h2></div>
+      <div className="pipe">${HOW.map(([t, d], i) => html`<div key=${t}><div className="node"></div>
+        <div className="n">${nn(i + 1)}</div><h3>${t}</h3><p>${d}</p></div>`)}</div>
+    </section>
+
+    <section className="block">
+      <div className="anatomy">
+        <div>
+          <div className="eyebrow">Выдача</div>
+          <h2 style=${{ marginTop: 14 }}>Каждый вывод <b>можно проверить</b></h2>
+          <ol className="anat-list">
+            <li><div><b>Уверенность детектора</b><span>Шкала с отметками порога ${pct(thr)} и уровня High от 75%. Число, а не эпитет.</span></div></li>
+            <li><div><b>Стадия и динамика</b><span>От концепции до раннего внедрения; рост публикаций и новостей год к году.</span></div></li>
+            <li><div><b>Лестница зрелости</b><span>Наука → код → деньги → массовые СМИ → энциклопедия: на какой ступени уже есть подтверждения.</span></div></li>
+            <li><div><b>Источник рядом с выводом</b><span>Дата, тип, язык и уровень доверенности A–D у каждого документа.</span></div></li>
+          </ol>
+        </div>
+        <div className="anat-card" aria-label="Схема строки выдачи">
+          <div className="label" style=${{ marginBottom: 6 }}>Из чего состоит строка выдачи</div>
+          <div className="anat-row"><span className="label">Уверенность</span><div style=${{ maxWidth: 260 }}><${Meter} p=${HIGH + 0.08} thr=${thr} />
+            <div className="sub" style=${{ marginTop: 8 }}>чёрная отметка — порог детектора, латунная — High</div></div></div>
+          <div className="anat-row"><span className="label">Стадия</span><div className="chips" style=${{ gap: 14 }}>
+            ${[1, 2, 3, 4, 5].map((c) => html`<${StageTag} key=${c} code=${c} label=${String(c)} />`)}</div></div>
+          <div className="anat-row"><span className="label">Зрелость</span><${Ladder} value=${{ research: true, code: true, money: true }} big /></div>
+          <div className="anat-row"><span className="label">Источник</span><div style=${{ display: "flex", gap: 8 }}>
+            ${["A", "B", "C", "D"].map((t) => html`<span key=${t} className=${"tl " + t}>${t}</span>`)}</div></div>
+        </div>
       </div>
     </section>
 
     <section className="block">
-      <div className="eyebrow">Как это работает</div>
-      <h2 style=${{ marginTop: 14, marginBottom: 32 }}>От запроса до <b>ТОП-15</b></h2>
-      <div className="steps-grid">${HOW.map(([t, d], i) => html`<div key=${t} className="stp">
-        <div className="n">${nn(i)}</div><span className="caps">${t}</span><p>${d}</p></div>`)}</div>
+      <div className="center"><div className="mark"><span>Идея</span></div>
+        <h2>Ценный сигнал <b>в массиве данных</b></h2></div>
+      <div className="pillars">
+        <div className="pillar"><div className="k">Aurum</div><p>«Золото» по-латыни. Технология, о которой уже есть независимые подтверждения, но ещё нет массовых СМИ и энциклопедии.</p></div>
+        <div className="pillar"><div className="k">Foresight</div><p>Взгляд в будущее по измеримым признакам: рост публикаций быстрее потока, всплеск новостей, первые раунды и новые репозитории.</p></div>
+        <div className="pillar"><div className="k">System</div><p>Методика, у каждого вывода есть источник, а уверенность разложена на вклад признаков.</p></div>
+      </div>
     </section>
 
     <section className="block">
@@ -338,14 +546,14 @@ function Home() {
           <div className="eyebrow">Принципы</div>
           <h2 style=${{ marginTop: 14 }}>Золото появляется <b>точечно и по делу</b></h2>
           <p className="lead" style=${{ fontSize: 15.5 }}>Языковая модель извлекает факты и пишет тексты только по найденным источникам.
-            Решение «слабый сигнал или нет» принимает детектор, и каждый вызов модели записан в журнал запроса.</p>
+            Решение «слабый сигнал или нет» принимает детектор, а каждый вызов модели записан в журнал запроса.</p>
           <a className="btn ghost" href="#/model">Методология</a>
         </div>
         <div className="values">
-          <div><span className="caps">Точность</span><p>Логистическая модель над 16 признаками; метрики — по проверке на темах, которых модель не видела.</p></div>
-          <div><span className="caps">Доказательность</span><p>Источники с уровнями доверенности A–D; сигнал только из пресс-релизов помечается и теряет уверенность.</p></div>
-          <div><span className="caps">Дальновидность</span><p>Лестница зрелости: наука → код → деньги → массовые СМИ → энциклопедия.</p></div>
-          <div><span className="caps">Сдержанность</span><p>Не выдаём хайп за сигнал: отклонённые кандидаты показаны с категорией и причиной.</p></div>
+          <div><span className="k">Точность</span><p>Логистическая модель над 16 признаками; метрики — на темах, которых модель не видела.</p></div>
+          <div><span className="k">Доказательность</span><p>Уровни доверенности A–D; сигнал только из пресс-релизов помечается и теряет уверенность.</p></div>
+          <div><span className="k">Дальновидность</span><p>Лестница зрелости: наука → код → деньги → массовые СМИ → энциклопедия.</p></div>
+          <div><span className="k">Сдержанность</span><p>Не выдаём хайп за сигнал: отклонённые кандидаты показаны с категорией и причиной.</p></div>
         </div>
       </div>
     </section>
@@ -354,76 +562,195 @@ function Home() {
 
 function Progress({ job }) {
   const idx = Math.max(0, STAGES.indexOf(job.stage));
-  const started = new Date(job.created_at + "Z");
+  const queued = job.status === "queued";
   const [, tick] = useState(0);
   useEffect(() => { const t = setInterval(() => tick((x) => x + 1), 1000); return () => clearInterval(t); }, []);
-  const sec = Math.max(0, Math.round((Date.now() - started) / 1000));
-  const queued = job.status === "queued";
-  return html`<div className="progress" aria-live="polite">
+  const sec = Math.max(0, Math.round((Date.now() - new Date(job.created_at + "Z")) / 1000));
+  const mm = `${Math.floor(sec / 60)}:${String(sec % 60).padStart(2, "0")}`;
+  return html`<div className="page" aria-live="polite">
     <div className="eyebrow">Поиск слабых сигналов</div>
-    <h2 style=${{ margin: "12px 0 0", fontSize: 26 }}>«${job.query}»</h2>
-    <div className="meter"><b style=${{ width: pct(job.progress || 0) }}></b></div>
-    <div className="sub">${queued ? "В очереди" : job.stage} · прошло ${Math.floor(sec / 60)} мин ${sec % 60} с · бюджет ${BUDGET_MIN} мин</div>
-    <ol className="steps">${STAGES.map((s, i) => html`<li key=${s} className=${queued ? "" : i < idx ? "done" : i === idx ? "now" : ""}>
-      <span className="n">${nn(i)}</span><span>${s}</span></li>`)}</ol>
-    <p className="note" style=${{ marginTop: 16 }}>Страницу можно закрыть: результат сохранится по этой ссылке.</p>
+    <h1 style=${{ marginBottom: 0 }}>«${job.query}»</h1>
+    <div className="prog">
+      <div className="card open"><div className="card-b">
+        <ol className="steps">${STAGES.map((s, i) => {
+          const cls = queued ? "" : i < idx ? "done" : i === idx ? "now" : "";
+          return html`<li key=${s} className=${cls}><span className="dot"></span><span>${nn(i + 1)} · ${s}</span>
+            <span className="st">${cls === "done" ? "готово" : cls === "now" ? "сейчас" : ""}</span></li>`;
+        })}</ol>
+      </div></div>
+      <div className="clock">
+        <span className="k">${queued ? "В очереди" : "Прошло"}</span>
+        <span className="v">${mm}</span>
+        <div className="meter" role="img" aria-label=${`прошло ${pct(Math.min(1, sec / (BUDGET_MIN * 60)))} бюджета`}>
+          <i style=${{ width: pct(Math.min(1, sec / (BUDGET_MIN * 60))) }}></i></div>
+        <span className="sub">Бюджет — ${BUDGET_MIN} минут. Готовность ${pct(job.progress || 0)}. Страницу можно закрыть: результат сохранится по этой ссылке.</span>
+      </div>
+    </div>
+  </div>`;
+}
+
+function Aside({ res, job }) {
+  const byStage = useMemo(() => { const c = {}; res.signals.forEach((s) => { c[s.stage.code] = (c[s.stage.code] || 0) + 1; }); return c; }, [res]);
+  const byCat = useMemo(() => { const c = {}; res.rejected.forEach((r) => { c[r.category] = (c[r.category] || 0) + 1; }); return Object.entries(c).sort((a, b) => b[1] - a[1]); }, [res]);
+  const times = STAGES.filter((s) => res.timings[s] != null).map((s) => [s, res.timings[s]]);
+  const tmax = Math.max(1, ...times.map(([, v]) => v));
+  const total = res.timings["Всего"] || 0;
+  const cmax = Math.max(1, ...byCat.map(([, v]) => v));
+  return html`<aside className="aside">
+    ${res.signals.length > 0 && html`<div className="card open"><div className="card-b">
+      <h3>Стадии в ТОП-${res.signals.length}</h3>
+      <div className="stack" role="img" aria-label="Распределение сигналов по стадиям">
+        ${[1, 2, 3, 4, 5].filter((c) => byStage[c]).map((c) => html`<i key=${c} style=${{ flex: byStage[c], background: stageColor(c) }} title=${STAGE_LABELS[c] + ": " + byStage[c]}></i>`)}</div>
+      <div className="legend-rows">${[1, 2, 3, 4, 5].filter((c) => byStage[c]).map((c) => html`<div key=${c}>
+        <i className="sw" style=${{ background: stageColor(c) }}></i><span>${STAGE_LABELS[c]}</span><b>${byStage[c]}</b></div>`)}</div>
+    </div></div>`}
+    ${byCat.length > 0 && html`<div className="card"><div className="card-b">
+      <h3>Почему отклонены</h3>
+      <div className="hbar">${byCat.map(([k, v]) => html`<${React.Fragment} key=${k}><div className="t"><span>${k}</span><span>${v}</span></div>
+        <div className="b"><i style=${{ width: pct(v / cmax) }}></i></div><//>`)}</div>
+    </div></div>`}
+    ${times.length > 0 && html`<div className="card"><div className="card-b">
+      <h3>Время по этапам</h3>
+      <div className="hbar">${times.map(([k, v]) => html`<${React.Fragment} key=${k}><div className="t"><span>${k}</span><span>${dur(v)}</span></div>
+        <div className="b"><i style=${{ width: pct(v / tmax) }}></i></div><//>`)}</div>
+      <div className="sub">Всего ${dur(total)} из бюджета ${BUDGET_MIN} мин.</div>
+    </div></div>`}
+    <div className="card"><div className="card-b">
+      <h3>Модели и детектор</h3>
+      <dl className="kv">${Object.entries(res.models).map(([k, v]) => html`<${React.Fragment} key=${k}><dt>${k}</dt><dd>${v}</dd><//>`)}
+        <dt>детектор</dt><dd>${res.detector.source === "trained" ? `обучен ${day(res.detector.trained_at)}` : "априорные веса"}</dd></dl>
+      <div style=${{ marginTop: 12, display: "flex", gap: 14, flexWrap: "wrap", fontSize: 13 }}>
+        <a href="#/model">Веса и метрики</a><a href=${"/api/jobs/" + job.id + "/llm"}>Журнал вызовов моделей</a></div>
+    </div></div>
+    ${res.notes.map((n, i) => html`<div key=${i} className="note">${n}</div>`)}
+  </aside>`;
+}
+
+function SignalList({ res, job, thr }) {
+  const [q, setQ] = useState("");
+  const [stage, setStage] = useState(0);
+  const [sort, setSort] = useState("conf");
+  const counts = useMemo(() => { const c = {}; res.signals.forEach((s) => { c[s.stage.code] = (c[s.stage.code] || 0) + 1; }); return c; }, [res]);
+  const rows = useMemo(() => {
+    const t = q.trim().toLowerCase();
+    let r = res.signals.filter((s) => (!stage || s.stage.code === stage) &&
+      (!t || [s.name_ru, s.name_en, ...(s.aliases || [])].join(" ").toLowerCase().includes(t)));
+    const by = { conf: (a, b) => b.confidence - a.confidence, score: (a, b) => b.score - a.score || b.confidence - a.confidence,
+      stage: (a, b) => a.stage.code - b.stage.code || b.confidence - a.confidence };
+    return [...r].sort(by[sort]);
+  }, [res, q, stage, sort]);
+  if (!res.signals.length) return html`<div className="siglist"><div className="empty">Детектор не отнёс ни одного кандидата к слабым сигналам. Причины — на вкладке «Отклонённые».</div></div>`;
+  return html`<div>
+    <div className="toolbar">
+      <label className="filter"><span className="sr">Найти в выдаче</span>${Icon.search}
+        <input value=${q} onInput=${(e) => setQ(e.target.value)} placeholder="Найти в выдаче" /></label>
+      <div className="chips">
+        <button className="chip" aria-pressed=${stage === 0} onClick=${() => setStage(0)}>Все <span className="n">${res.signals.length}</span></button>
+        ${[1, 2, 3, 4, 5].filter((c) => counts[c]).map((c) => html`<button key=${c} className="chip" aria-pressed=${stage === c} onClick=${() => setStage(stage === c ? 0 : c)}>
+          <i className="sw" style=${{ background: stageColor(c) }}></i>${STAGE_LABELS[c]} <span className="n">${counts[c]}</span></button>`)}
+      </div>
+      <label style=${{ marginLeft: "auto" }}><span className="sr">Сортировка</span>
+        <select value=${sort} onChange=${(e) => setSort(e.target.value)}>
+          <option value="conf">По уверенности</option><option value="score">По баллу «стадия + тренд»</option><option value="stage">По стадии</option>
+        </select></label>
+    </div>
+    <div className="siglist">
+      ${rows.length === 0 && html`<div className="empty">Ничего не найдено по фильтру.</div>`}
+      ${rows.map((s) => html`<a key=${s.rank} className="sig" href=${`#/job/${job.id}/s/${s.rank}`}>
+        <span className="rk">${nn(s.rank)}</span>
+        <span style=${{ minWidth: 0 }}>
+          <span className="nm" style=${{ display: "block" }}>${s.name_ru}</span>
+          <span className="en">${s.name_en}</span>
+          <span className="meta"><${StageTag} code=${s.stage.code} label=${s.stage.label} /><span className="tag">${s.trend.label}</span>
+            <span className="tag">балл ${s.score}</span>${s.flags.length > 0 && html`<span className="tag" style=${{ color: "var(--risk)" }}>требует проверки</span>`}</span>
+          ${s.key_predictors.length > 0 && html`<span className="why">${s.key_predictors.join("; ")}</span>`}
+        </span>
+        <span className="cf"><${Conf} p=${s.confidence} thr=${thr} /></span>
+        <span className="ld"><${Ladder} value=${s.ladder} /></span>
+        <span className="arr" aria-hidden="true">→</span>
+      </a>`)}
+    </div>
+  </div>`;
+}
+
+function Candidates({ res, thr }) {
+  const [sort, setSort] = useState(["confidence", -1]);
+  const rows = useMemo(() => [...res.candidates].sort((a, b) => {
+    const [k, d] = sort; const x = a[k], y = b[k];
+    return (typeof x === "string" ? x.localeCompare(y, "ru") : x - y) * d;
+  }), [res, sort]);
+  const H = ({ k, children }) => html`<th><button onClick=${() => setSort([k, sort[0] === k ? -sort[1] : -1])}>${children}${sort[0] === k ? (sort[1] < 0 ? " ↓" : " ↑") : ""}</button></th>`;
+  return html`<div className="card open"><div style=${{ overflowX: "auto" }}><table>
+    <thead><tr><${H} k="name_ru">Кандидат<//><${H} k="confidence">Уверенность<//><th>Статус</th><${H} k="support">Документов<//></tr></thead>
+    <tbody>${rows.map((c, i) => html`<tr key=${i}><td><div className="name">${c.name_ru}</div><div className="sub">${c.name_en}</div></td>
+      <td style=${{ minWidth: 190 }}><${Conf} p=${c.confidence} thr=${thr} /></td>
+      <td><span className="cat">${c.status}</span></td><td>${c.support}</td></tr>`)}</tbody>
+  </table></div></div>`;
+}
+
+function Rejected({ res }) {
+  const cats = useMemo(() => { const c = {}; res.rejected.forEach((r) => { c[r.category] = (c[r.category] || 0) + 1; }); return c; }, [res]);
+  const [cat, setCat] = useState("");
+  const rows = res.rejected.filter((r) => !cat || r.category === cat);
+  return html`<div>
+    <div className="toolbar"><div className="chips">
+      <button className="chip" aria-pressed=${!cat} onClick=${() => setCat("")}>Все <span className="n">${res.rejected.length}</span></button>
+      ${Object.entries(cats).map(([k, v]) => html`<button key=${k} className="chip" aria-pressed=${cat === k} onClick=${() => setCat(cat === k ? "" : k)}>${k} <span className="n">${v}</span></button>`)}
+    </div></div>
+    <div className="card open"><div style=${{ overflowX: "auto" }}><table>
+      <thead><tr><th>Кандидат</th><th>Категория</th><th>Причина исключения</th><th>Уверенность</th></tr></thead>
+      <tbody>${rows.map((r, i) => html`<tr key=${i}><td><div className="name">${r.name_ru}</div><div className="sub">${r.name_en}</div></td>
+        <td><span className=${"cat" + (r.category === "хайп" ? " risk" : "")}>${r.category}</span></td>
+        <td style=${{ color: "var(--ink2)" }}>${r.reason}</td><td>${r.confidence == null ? "—" : pct(r.confidence)}</td></tr>`)}</tbody>
+    </table></div></div>
   </div>`;
 }
 
 function Results({ job }) {
   const res = job.result;
+  const m = useModel();
+  const thr = m ? m.gate_threshold : 0.6;
   const [tab, setTab] = useState("top");
   const [busy, setBusy] = useState(false);
   const rerun = async () => {
     setBusy(true);
     try {
-      const r = await api("/api/search", { method: "POST", headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ query: res.query, force: true }) });
+      const r = await api("/api/search", { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify({ query: res.query, force: true }) });
       location.hash = "#/job/" + r.job_id;
     } catch (e) { setBusy(false); }
   };
   const st = res.stats;
   return html`<div className="page">
-    <div className="eyebrow">Запрос</div>
-    <h1 style=${{ maxWidth: "none" }}>${res.query}</h1>
-    <div className="chips">${res.interpreted.subtopics.map((s) => html`<span key=${s.en} className="chip static" title=${s.en}>${s.ru || s.en}</span>`)}</div>
-    <div className="stats">
-      <div className="stat"><div className="k">Обработано источников</div><div className="v">${st.sources_processed.toLocaleString("ru-RU")}</div></div>
-      <div className="stat"><button onClick=${() => setTab("all")}><div className="k">Кандидатов проверено →</div><div className="v">${st.candidates}</div></button></div>
-      <div className="stat"><div className="k">Уверенность выше 75%</div><div className="v">${st.confident}</div></div>
+    <div className="res-head">
+      <div style=${{ minWidth: 0 }}>
+        <div className="eyebrow">Запрос · ${when(res.generated_at)}</div>
+        <h1>${res.query}</h1>
+        <div className="chips">${res.interpreted.subtopics.map((s) => html`<span key=${s.en} className="chip static" title=${s.en}>${s.ru || s.en}</span>`)}</div>
+      </div>
+      <div className="actions">
+        <a className="btn" href=${"/api/jobs/" + job.id + "/export.xlsx"}>Скачать xlsx</a>
+        <button className="ghost" onClick=${rerun} disabled=${busy}>Пересчитать</button>
+      </div>
     </div>
-    <div style=${{ display: "flex", gap: 12, flexWrap: "wrap" }}>
-      <a className="btn" href=${"/api/jobs/" + job.id + "/export.xlsx"}>Скачать xlsx</a>
-      <button className="ghost" onClick=${rerun} disabled=${busy}>Пересчитать заново</button>
+    <div className="kpis">
+      <div className="kpi"><div className="k">Источников</div><div className="v">${fmtN(st.sources_processed)}</div><div className="h">${fmtN(st.documents_discovery)} на этапе сбора</div></div>
+      <div className="kpi"><div className="k">Кандидатов</div><div className="v">${fmtN(st.candidates)}</div><div className="h">проверено детектором</div></div>
+      <div className="kpi"><div className="k">Слабых сигналов</div><div className="v">${fmtN(st.weak_signals)}</div><div className="h">выше порога ${pct(thr)}, в ТОП — ${res.signals.length}</div></div>
+      <div className="kpi key"><div className="k">Уверенность ≥ 75%</div><div className="v">${fmtN(st.confident)}</div><div className="h">${fmtN(st.rejected)} отклонено с причиной</div></div>
     </div>
     <div className="tabs" role="tablist">
-      ${[["top", `ТОП-${res.signals.length}`], ["all", `Все кандидаты (${res.candidates.length})`], ["rej", `Отклонённые (${res.rejected.length})`]]
-        .map(([k, l]) => html`<button key=${k} className="tab" role="tab" aria-selected=${tab === k} onClick=${() => setTab(k)}>${l}</button>`)}
+      ${[["top", `ТОП-${res.signals.length}`, null], ["all", "Все кандидаты", res.candidates.length], ["rej", "Отклонённые", res.rejected.length]]
+        .map(([k, l, n]) => html`<button key=${k} className="tab" role="tab" aria-selected=${tab === k} onClick=${() => setTab(k)}>${l}${n != null && html`<span className="n">${n}</span>`}</button>`)}
     </div>
-    <div className="table-wrap">
-      ${tab === "top" && (res.signals.length ? html`<table><thead><tr><th>№</th><th>Технология</th><th>Скоринг</th><th className="hide-sm">Ключевые предикторы</th>
-        <th className="hide-sm">Зрелость</th><th className="hide-sm"></th></tr></thead><tbody>
-        ${res.signals.map((s) => html`<tr key=${s.rank}><td style=${{ fontWeight: 300, fontSize: 20, color: "var(--accent-text)" }}>${nn(s.rank - 1)}</td>
-          <td><a className="name" href=${`#/job/${job.id}/s/${s.rank}`}>${s.name_ru}</a><div className="sub">${s.name_en} · ${s.stage.label}, ${s.trend.label.toLowerCase()}</div></td>
-          <td><${Badge} s=${s} /></td>
-          <td className="sub hide-sm" style=${{ color: "var(--ink2)" }}>${s.key_predictors.join("; ")}</td>
-          <td className="hide-sm"><${Ladder} value=${s.ladder} /></td>
-          <td className="hide-sm" style=${{ whiteSpace: "nowrap" }}><a href=${`#/job/${job.id}/s/${s.rank}`}>Инсайт →</a></td></tr>`)}
-      </tbody></table>` : html`<p className="note" style=${{ padding: 18, margin: 0 }}>Детектор не отнёс ни одного кандидата к слабым сигналам. Причины — на вкладке «Отклонённые».</p>`)}
-      ${tab === "all" && html`<table><thead><tr><th>Кандидат</th><th>Уверенность</th><th>Статус</th><th className="hide-sm">Документов</th></tr></thead><tbody>
-        ${res.candidates.map((c, i) => html`<tr key=${i}><td><div className="name">${c.name_ru}</div><div className="sub">${c.name_en}</div></td>
-          <td>${pct(c.confidence)}</td><td>${c.status}</td><td className="hide-sm">${c.support}</td></tr>`)}
-      </tbody></table>`}
-      ${tab === "rej" && html`<table><thead><tr><th>Кандидат</th><th>Категория</th><th>Причина исключения</th></tr></thead><tbody>
-        ${res.rejected.map((r, i) => html`<tr key=${i}><td><div className="name">${r.name_ru}</div><div className="sub">${r.name_en}</div></td>
-          <td>${r.category}</td><td className="sub" style=${{ color: "var(--ink2)" }}>${r.reason}</td></tr>`)}
-      </tbody></table>`}
-    </div>
-    <div className="foot-meta">
-      <div>Сформировано ${new Date(res.generated_at).toLocaleString("ru-RU")} · время обработки ${Math.round(res.timings["Всего"] / 60 * 10) / 10} мин</div>
-      <div>Модели: ${Object.entries(res.models).map(([k, v]) => `${k} — ${v}`).join("; ")}</div>
-      <div>Детектор: ${res.detector.source === "trained" ? `обучен ${res.detector.trained_at}` : "априорные веса, модель не обучена"} · <a href="#/model">веса и метрики</a> · <a href=${"/api/jobs/" + job.id + "/llm"}>журнал вызовов моделей</a></div>
-      ${res.notes.map((n, i) => html`<div key=${i}>${n}</div>`)}
+    <div className="res-grid">
+      <div style=${{ minWidth: 0 }}>
+        ${tab === "top" && html`<${SignalList} res=${res} job=${job} thr=${thr} />`}
+        ${tab === "all" && html`<${Candidates} res=${res} thr=${thr} />`}
+        ${tab === "rej" && html`<${Rejected} res=${res} />`}
+        <div className="foot-meta">Сформировано ${new Date(res.generated_at).toLocaleString("ru-RU")} · обработка ${dur(res.timings["Всего"] || 0)}.
+          Шкала уверенности: чёрная отметка — порог детектора ${pct(thr)}, латунная — High от 75%.</div>
+      </div>
+      <${Aside} res=${res} job=${job} />
     </div>
   </div>`;
 }
@@ -431,8 +758,7 @@ function Results({ job }) {
 function Bars({ items }) {
   const max = Math.max(0.01, ...items.map((x) => Math.abs(x.contribution)));
   return html`<div className="bars">${items.map((x) => {
-    const w = (Math.abs(x.contribution) / max) * 50;
-    const pos = x.contribution >= 0;
+    const w = (Math.abs(x.contribution) / max) * 50, pos = x.contribution >= 0;
     return html`<${React.Fragment} key=${x.feature}><div>${x.text}</div>
       <div className="bar-track" role="img" aria-label=${(pos ? "повышает: +" : "снижает: ") + x.contribution}>
         <b style=${{ left: pos ? "50%" : 50 - w + "%", width: w + "%", background: pos ? "var(--accent)" : "var(--risk)" }}></b></div><//>`;
@@ -442,41 +768,81 @@ const BarsLegend = ({ plus, minus }) => html`<div className="legend">
   <span><i style=${{ background: "var(--accent)" }}></i>${plus}</span><span><i style=${{ background: "var(--risk)" }}></i>${minus}</span></div>`;
 
 function Insight({ job, rank }) {
-  const s = job.result.signals.find((x) => String(x.rank) === rank);
-  if (!s) return html`<div className="err">Сигнал не найден. <a href=${"#/job/" + job.id}>Вернуться к списку</a></div>`;
-  const src = (id) => s.sources.find((x) => x.id === id);
-  const caseSrc = s.case && s.case.source_id ? src(s.case.source_id) : null;
-  return html`<article className="doc page">
-    <a href=${"#/job/" + job.id} className="eyebrow" style=${{ textDecoration: "none" }}>← ТОП по запросу «${job.result.query}»</a>
-    <h1 style=${{ maxWidth: "none", marginTop: 20 }}>${s.name_ru}</h1>
+  const res = job.result;
+  const m = useModel();
+  const thr = m ? m.gate_threshold : 0.6;
+  const i = res.signals.findIndex((x) => String(x.rank) === rank);
+  const s = res.signals[i];
+  const [trust, setTrust] = useState("");
+  if (!s) return html`<div className="err">Сигнал не найден. <a href=${"#/job/" + job.id}>Вернуться к выдаче</a></div>`;
+  const caseSrc = s.case && s.case.source_id ? s.sources.find((x) => x.id === s.case.source_id) : null;
+  const tcount = {}; s.sources.forEach((x) => { tcount[x.trust] = (tcount[x.trust] || 0) + 1; });
+  const srcs = s.sources.filter((x) => !trust || x.trust === trust);
+  const prev = res.signals[i - 1], next = res.signals[i + 1];
+  return html`<article className="page">
+    <a className="crumb" href=${"#/job/" + job.id}>← ТОП-${res.signals.length} по запросу «${res.query}»</a>
+    <div className="eyebrow" style=${{ marginTop: 22 }}>Сигнал ${nn(s.rank)} из ${nn(res.signals.length)}</div>
+    <h1 style=${{ marginBottom: 6 }}>${s.name_ru}</h1>
     <div className="sub">${s.name_en}${s.aliases.length ? " · также: " + s.aliases.join(", ") : ""}</div>
-    <div className="meta"><${Badge} s=${s} /><span>Стадия: ${s.stage.label}</span><span>Динамика: ${s.trend.label}</span>
-      <span>Балл (стадия + тренд): ${s.score}</span></div>
-    <${Ladder} value=${s.ladder} big />
-    ${s.flags.map((f, i) => html`<div key=${i} className="flag">${f}</div>`)}
-    <h2>Описание <b>технологии</b></h2><p>${s.description || "Источники не содержат достаточного описания."}</p>
-    <h3>Потенциальное преимущество</h3><p>${s.advantage || "—"}</p>
-    <h3>Кейс-пример</h3><p>${s.case && s.case.text ? s.case.text : "Кейс не найден в источниках."}
-      ${caseSrc && html` <a href=${caseSrc.url} target="_blank" rel="noopener">Источник: ${caseSrc.domain}, ${caseSrc.date}</a>`}
-      ${s.case && s.case.note ? html` <span className="note">(${s.case.note})</span>` : ""}</p>
-    ${s.analyst_notes && html`<div><h3>Оценки в аналитических отчётах</h3><p>${s.analyst_notes}</p></div>`}
-    ${s.companies.length > 0 && html`<div><h3>Компании и организации</h3><p>${s.companies.join(", ")}</p></div>`}
-    <h2>Почему это <b>слабый сигнал</b></h2><p>${s.why_weak}</p>
-    <h3>Почему уверенность ${pct(s.confidence)}</h3>
-    <p className="note">Вклад каждого признака в итоговую оценку детектора: вес × стандартизированное значение.</p>
-    <${BarsLegend} plus="повышает уверенность" minus="снижает уверенность" />
-    <${Bars} items=${[...s.explanation.pros, ...s.explanation.cons]} />
-    <h2><b>Источники</b></h2>
-    <div className="table-wrap"><table><thead><tr>
-      <th>Источник</th><th>Дата</th><th>Тип</th><th>Язык</th><th>Доверенность</th></tr></thead><tbody>
-      ${s.sources.map((x) => html`<tr key=${x.id}><td><a href=${x.url} target="_blank" rel="noopener">${x.title}</a>
-        <div className="sub">${x.domain}</div>
-        ${x.summary_ru && html`<div style=${{ marginTop: 6, fontSize: 14 }}>${x.summary_ru} <span className="note">(${x.summary_note})</span></div>`}</td>
-        <td className="sub">${x.date}</td><td className="sub">${x.type}</td><td className="sub">${LANGS[x.lang] || x.lang}</td>
-        <td className="sub">${x.trust} · ${x.trust_label}</td></tr>`)}
-    </tbody></table></div>
-    <p className="note" style=${{ marginTop: 16 }}>Тексты описания, преимущества, кейса и резюме написаны моделью ${s.report_model || "—"} только по перечисленным источникам.
-      Статус и уверенность рассчитаны детектором по признакам, без участия языковой модели.</p>
+    <div className="ins-grid">
+      <div className="prose">
+        ${s.flags.map((f, k) => html`<div key=${k} className="note" style=${{ marginBottom: 14 }}>${f}</div>`)}
+        <h2>Описание <b>технологии</b></h2><p>${s.description || "Источники не содержат достаточного описания."}</p>
+        <h3>Потенциальное преимущество</h3><p>${s.advantage || "—"}</p>
+        <h3>Кейс-пример</h3><p>${s.case && s.case.text ? s.case.text : "Кейс не найден в источниках."}
+          ${caseSrc && html` <a href=${caseSrc.url} target="_blank" rel="noopener">${caseSrc.domain}, ${caseSrc.date}</a>`}
+          ${s.case && s.case.note ? html` <span className="muted">(${s.case.note})</span>` : ""}</p>
+        ${s.analyst_notes && html`<div><h3>Оценки в аналитических отчётах</h3><p>${s.analyst_notes}</p></div>`}
+        <h2>Почему это <b>слабый сигнал</b></h2><p>${s.why_weak}</p>
+        <h3>Вклад признаков в уверенность</h3>
+        <p className="sub" style=${{ margin: 0 }}>Вес × стандартизированное значение признака.</p>
+        <${BarsLegend} plus="повышает уверенность" minus="снижает уверенность" />
+        <${Bars} items=${[...s.explanation.pros, ...s.explanation.cons]} />
+      </div>
+      <aside className="aside">
+        <div className="keyfig">
+          <div className="k">Уверенность детектора</div>
+          <div className="v">${Math.round(s.confidence * 100)}<small>%</small></div>
+          <${Meter} p=${s.confidence} thr=${thr} />
+          <div className="scale"><span>0</span><span>порог ${pct(thr)}</span><span>High 75%</span><span>100</span></div>
+        </div>
+        <div className="card"><div className="card-b">
+          <dl className="kv" style=${{ gridTemplateColumns: "110px 1fr", fontSize: 14 }}>
+            <dt>Стадия</dt><dd><${StageTag} code=${s.stage.code} label=${s.stage.label} /></dd>
+            <dt>Динамика</dt><dd>${s.trend.label}</dd>
+            <dt>Балл</dt><dd>${s.score} <span className="muted" style=${{ fontWeight: 400 }}>(стадия + тренд)</span></dd>
+            <dt>Метка</dt><dd><${Badge} s=${s} /></dd>
+          </dl>
+          <div className="side-sec" style=${{ marginTop: 16 }}><div className="label" style=${{ marginBottom: 10 }}>Лестница зрелости</div><${Ladder} value=${s.ladder} big /></div>
+          ${s.companies.length > 0 && html`<div className="side-sec" style=${{ marginTop: 16 }}><div className="label" style=${{ marginBottom: 10 }}>Компании и организации</div>
+            <div className="chips">${s.companies.map((c) => html`<span key=${c} className="chip static">${c}</span>`)}</div></div>`}
+        </div></div>
+        <div className="pager">
+          ${prev ? html`<a href=${`#/job/${job.id}/s/${prev.rank}`}><span className="label">← ${nn(prev.rank)}</span>${prev.name_ru}</a>` : html`<span></span>`}
+          ${next ? html`<a className="r" href=${`#/job/${job.id}/s/${next.rank}`}><span className="label">${nn(next.rank)} →</span>${next.name_ru}</a>` : html`<span></span>`}
+        </div>
+      </aside>
+    </div>
+
+    <section style=${{ marginTop: 52 }}>
+      <div style=${{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", gap: 16, flexWrap: "wrap", marginBottom: 14 }}>
+        <h2 style=${{ margin: 0 }}><b>Источники</b> · ${s.sources.length}</h2>
+        <div className="chips">
+          <button className="chip" aria-pressed=${!trust} onClick=${() => setTrust("")}>Все</button>
+          ${["A", "B", "C", "D"].filter((t) => tcount[t]).map((t) => html`<button key=${t} className="chip" aria-pressed=${trust === t} onClick=${() => setTrust(trust === t ? "" : t)}>
+            Уровень ${t} <span className="n">${tcount[t]}</span></button>`)}
+        </div>
+      </div>
+      <div className="srcs">${srcs.map((x) => html`<div key=${x.id} className="src">
+        <span className=${"tl " + x.trust} title=${"доверенность: " + x.trust_label}>${x.trust}</span>
+        <div style=${{ minWidth: 0 }}>
+          <a className="t name" href=${x.url} target="_blank" rel="noopener">${x.title}</a>
+          <div className="m">${x.domain} · ${x.date} · ${x.type} · ${LANGS[x.lang] || x.lang}</div>
+          ${x.summary_ru && html`<div className="s">${x.summary_ru} <span className="muted">(${x.summary_note})</span></div>`}
+        </div></div>`)}</div>
+      <p className="sub" style=${{ marginTop: 14 }}>Тексты описания, преимущества, кейса и резюме написаны моделью ${s.report_model || "—"} только по перечисленным источникам.
+        Статус и уверенность рассчитаны детектором по признакам, без участия языковой модели.</p>
+    </section>
   </article>`;
 }
 
@@ -488,62 +854,80 @@ const TRUST = [
 ];
 
 function ModelPage() {
-  const [m, setM] = useState(null);
-  const [err, setErr] = useState("");
-  useEffect(() => { api("/api/model").then(setM).catch((e) => setErr(e.message)); }, []);
+  const m = useModel();
   const g = m && m.metrics && m.metrics.gate;
   return html`<div className="page">
-    <div className="doc">
-      <div className="eyebrow">Методология</div>
-      <h1 style=${{ maxWidth: "none" }}>Как система отличает <b>слабый сигнал от шума</b></h1>
-      <p className="lead">Слабый сигнал — технология, о которой уже есть независимые подтверждения (наука, код, деньги),
-        но которая ещё не поднялась до признаков зрелости: массовых СМИ, устойчивой энциклопедической статьи, разговоров
-        о размере рынка. Детектор отделяет её от зрелой технологии, маркетингового хайпа и информационного шума.</p>
-    </div>
+    <div className="eyebrow">Методология</div>
+    <h1 style=${{ maxWidth: "18ch" }}>Как система отличает <b>слабый сигнал от шума</b></h1>
+    <p className="lead">Слабый сигнал — технология, о которой уже есть независимые подтверждения (наука, код, деньги), но которая
+      ещё не поднялась до признаков зрелости: массовых СМИ, устойчивой статьи в энциклопедии, разговоров о размере рынка.</p>
 
-    <section className="block" style=${{ paddingTop: 44 }}>
+    <section className="block" style=${{ paddingTop: 48 }}>
       <div className="two">
         <div>
-          <div className="eyebrow">Лестница зрелости</div>
-          <h2 style=${{ marginTop: 14 }}>Наука → код → деньги → <b>СМИ → энциклопедия</b></h2>
-          <p className="note">Слабый сигнал стоит на нижних ступенях. Чем выше технология поднялась, тем ближе она к зрелости.</p>
+          <div className="eyebrow">Детектор</div>
+          <h2 style=${{ marginTop: 14 }}>16 признаков, <b>логистическая регрессия</b></h2>
+          <p className="muted">Рост публикаций относительно всего потока OpenAlex (гамма-пуассоновская оценка), возраст темы, всплески новостей
+            (автомат Клейнберга), доля раундов финансирования, пресс-релизов и массовых СМИ, независимость источников, репозитории, возраст
+            статьи в Википедии. Вес показывает, в какую сторону и насколько сильно признак двигает оценку.</p>
+          ${!m && html`<p className="muted">Загружаю веса…</p>`}
+          ${m && html`<div className="kpis" style=${{ gridTemplateColumns: "repeat(2,minmax(0,1fr))", marginTop: 24 }}>
+            <div className="kpi key"><div className="k">Порог</div><div className="v">${pct(m.gate_threshold)}</div><div className="h">слабый сигнал — от этой уверенности</div></div>
+            <div className="kpi"><div className="k">Модель</div><div className="v" style=${{ fontSize: 30, marginTop: 14 }}>${m.source === "trained" ? day(m.trained_at) : "априорная"}</div><div className="h">${m.source === "trained" ? "дата обучения" : "веса из методологии"}</div></div>
+          </div>`}
+          ${g && html`<div style=${{ marginTop: 18 }}><div className="label" style=${{ marginBottom: 8 }}>Проверка на теме, которую модель не видела · ${m.metrics.n} примеров</div>
+            <div className="kpis" style=${{ gridTemplateColumns: "repeat(4,minmax(0,1fr))", margin: 0 }}>
+              ${[["Accuracy", g.accuracy], ["Precision", g.precision], ["Recall", g.recall], ["F1", g.f1]].map(([k, v]) => html`<div key=${k} className="kpi">
+                <div className="k">${k}</div><div className="v" style=${{ fontSize: 32 }}>${pct(v)}</div></div>`)}
+            </div></div>`}
         </div>
-        <div style=${{ paddingTop: 8 }}><${Ladder} value=${{ research: true, code: true, money: true, mainstream: false, encyclopedia: false }} big />
-          <p className="note" style=${{ marginTop: 14 }}>Пример: есть наука, код и первые раунды, массовых СМИ и статьи в энциклопедии ещё нет.</p></div>
+        <div>${m && html`<div className="card open"><div className="card-b">
+          <h3>Веса признаков</h3>
+          <${BarsLegend} plus="за слабый сигнал" minus="против: признак зрелости или хайпа" />
+          <${Bars} items=${m.weights.map((w) => ({ feature: w.feature, contribution: w.weight, text: w.label }))} />
+        </div></div>`}</div>
       </div>
     </section>
 
     <section className="block">
-      <div className="eyebrow">Доверенность источников</div>
+      <div className="two">
+        <div>
+          <div className="eyebrow">Стадии</div>
+          <h2 style=${{ marginTop: 14 }}>Одна латунная шкала — <b>от идеи до массы</b></h2>
+          <p className="muted">Стадия порядковая, поэтому цвет растёт по одной гамме: чем темнее, тем ближе к зрелости. В ТОП попадают стадии 1–4.</p>
+        </div>
+        <div>
+          <div className="stagescale">${[1, 2, 3, 4, 5].map((c) => html`<div key=${c} style=${{ background: stageColor(c), color: c >= 4 ? "#FFF8E6" : "#121B27" }}>
+            <span>${c}</span>${STAGE_LABELS[c]}</div>`)}</div>
+          <div style=${{ marginTop: 26 }}><div className="label" style=${{ marginBottom: 10 }}>Лестница зрелости</div>
+            <${Ladder} value=${{ research: true, code: true, money: true }} big />
+            <p className="sub" style=${{ marginTop: 10 }}>Пример: есть наука, код и первые раунды; массовых СМИ и статьи в энциклопедии ещё нет.</p></div>
+        </div>
+      </div>
+    </section>
+
+    <section className="block">
+      <div className="mark"><span>Доверенность источников</span></div>
       <div className="trust">${TRUST.map(([lv, t]) => html`<div key=${lv}><div className="lv">${lv}</div><p>${t}</p></div>`)}</div>
     </section>
 
     <section className="block">
       <div className="two">
-        <div>
-          <div className="eyebrow">Детектор</div>
-          <h2 style=${{ marginTop: 14 }}>16 признаков, <b>логистическая регрессия</b></h2>
-          <p className="note">Рост публикаций относительно всего потока OpenAlex (гамма-пуассоновская оценка), возраст темы,
-            всплески новостей (автомат Клейнберга), доля раундов финансирования, пресс-релизов и массовых СМИ,
-            независимость источников, репозитории, возраст статьи в Википедии. Вес показывает, в какую сторону
-            и насколько сильно признак двигает оценку.</p>
-          ${!m && !err && html`<p className="note">Загружаю…</p>`}
-          ${err && html`<p className="note">Веса недоступны: ${err}</p>`}
-          ${m && html`<p style=${{ marginTop: 18 }}>${m.source === "trained" ? `Модель обучена ${m.trained_at}.` : "Модель пока не обучена: используются априорные веса из методологии."}
-            ${m.gate_threshold != null ? ` Порог отнесения к слабым сигналам — ${pct(m.gate_threshold)}.` : ""}</p>`}
-          ${g && html`<p className="note">Жёсткая проверка на теме, которую модель не видела (leave-one-theme-out), ${m.metrics.n} примеров:
-            accuracy ${pct(g.accuracy)}, precision ${pct(g.precision)}, recall ${pct(g.recall)}, F1 ${pct(g.f1)}.</p>`}
-        </div>
-        <div>${m && html`<div><${BarsLegend} plus="за слабый сигнал" minus="против (признак зрелости или хайпа)" />
-          <${Bars} items=${m.weights.map((w) => ({ feature: w.feature, contribution: w.weight, text: w.label }))} /></div>`}</div>
+        <div><div className="eyebrow">Границы данных</div><h2 style=${{ marginTop: 14 }}>Что система <b>не видит</b></h2></div>
+        <ul className="limits">
+          <li>Google News RSS отдаёт не больше 100 записей за запрос, поэтому для популярных тем объём новостей упирается в потолок. Это учтено признаком «насыщенный поток».</li>
+          <li>Рост публикаций нормируется на объём всего корпуса OpenAlex, рост новостей — нет: общего объёма ленты мы не знаем.</li>
+          <li>Патентные базы в текущей версии не подключены.</li>
+          <li>Русские новости показываются как источники, но в признаки не входят: у них нет окна «прошлый год».</li>
+        </ul>
       </div>
     </section>
 
     ${m && html`<section className="block">
       <div className="eyebrow">Модели по задачам</div>
-      <p className="note" style=${{ marginTop: 14 }}>Назначение фиксировано в настройках стенда, автоматического выбора нет.
+      <p className="muted" style=${{ marginTop: 12, maxWidth: "70ch" }}>Назначение фиксировано в настройках стенда, автоматического выбора нет.
         Языковая модель извлекает факты и пишет тексты по найденным источникам; решение принимает детектор.</p>
-      <div className="table-wrap" style=${{ marginTop: 14, maxWidth: 640 }}><table><tbody>
+      <div className="card open" style=${{ maxWidth: 640, marginTop: 14 }}><table><tbody>
         ${Object.entries(m.models).map(([k, v]) => html`<tr key=${k}><td className="name">${k}</td><td>${v}</td></tr>`)}
       </tbody></table></div>
     </section>`}
@@ -567,11 +951,11 @@ function JobView({ id, rank }) {
     return () => { stop = true; clearTimeout(timer); };
   }, [id]);
   if (err) return html`<div className="err">Не удалось загрузить запрос: ${err}</div>`;
-  if (!job) return html`<div className="note page">Загружаю…</div>`;
-  if (job.status === "failed") return html`<div className="err">Обработка остановилась с ошибкой: ${job.error}.
+  if (!job) return html`<div className="page muted">Загружаю…</div>`;
+  if (job.status === "failed") return html`<div className="err"><b>Обработка остановилась с ошибкой.</b> ${job.error}<br />
     Проверьте ключи моделей и доступ к источникам, затем запустите запрос снова.</div>`;
   if (job.status !== "done") return html`<${Progress} job=${job} />`;
-  return rank ? html`<${Insight} job=${job} rank=${rank} />` : html`<${Results} job=${job} />`;
+  return rank ? html`<${Insight} job=${job} rank=${rank} key=${rank} />` : html`<${Results} job=${job} />`;
 }
 
 function ThemeToggle() {
@@ -580,33 +964,45 @@ function ThemeToggle() {
     r.dataset.theme = r.dataset.theme === "dark" ? "light" : "dark";
     try { localStorage.setItem("aurum-theme", r.dataset.theme); } catch (e) {}
   };
-  return html`<button className="theme" onClick=${flip} aria-label="Светлая или тёмная тема" title="Светлая / тёмная тема">
-    <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" strokeWidth="1.6" aria-hidden="true">
-      <circle cx="12" cy="12" r="8" /><path d="M12 4a8 8 0 0 1 0 16z" fill="currentColor" /></svg></button>`;
+  return html`<button className="iconbtn" onClick=${flip} aria-label="Светлая или тёмная тема" title="Светлая / тёмная тема">${Icon.theme}</button>`;
 }
 
 function App() {
   const [r, setR] = useState(route());
-  useEffect(() => { const f = () => { setR(route()); window.scrollTo(0, 0); }; addEventListener("hashchange", f); return () => removeEventListener("hashchange", f); }, []);
+  const [sm, setSm] = useState(false);
+  useEffect(() => { const f = () => { setR(route()); setSm(false); window.scrollTo(0, 0); }; addEventListener("hashchange", f); return () => removeEventListener("hashchange", f); }, []);
+  useEffect(() => {
+    const k = (e) => {
+      if (e.key !== "/" || /input|textarea|select/i.test(document.activeElement.tagName)) return;
+      const el = [...document.querySelectorAll("input[data-search]")].find((x) => x.offsetParent !== null);
+      if (el) { e.preventDefault(); el.focus(); } else { setSm(true); }
+    };
+    addEventListener("keydown", k); return () => removeEventListener("keydown", k);
+  }, []);
+  const home = r[0] === "";
   let view = html`<${Home} />`;
   if (r[0] === "job" && r[1]) view = html`<${JobView} id=${r[1]} rank=${r[2] === "s" ? r[3] : null} key=${r[1]} />`;
   if (r[0] === "model") view = html`<${ModelPage} />`;
   return html`<${React.Fragment}>
     <header className="top"><div className="hd">
       <a className="lockup" href="#/" aria-label="Aurum Foresight System — на главную">
-        <img src="/static/logo.svg" alt="" />
+        <img className="logo-light" src="/static/logo.svg" alt="" /><img className="logo-dark" src="/static/logo-foil.svg" alt="" />
         <span className="wm"><span className="t1">AURUM FORESIGHT</span><span className="t2">SYSTEM</span></span></a>
-      ${r[0] !== "" && html`<${SearchBox} compact />`}
+      ${!home && html`<${SearchBox} compact />`}
       <nav className="links">
-        <a href="#/" className=${r[0] === "" ? "on" : ""}>Поиск</a>
+        <a href="#/" className=${home ? "on" : ""}>Поиск</a>
         <a href="#/model" className=${r[0] === "model" ? "on" : ""}>Методология</a>
-        <${ThemeToggle} />
+        <a href="/docs" className="hide-sm">API</a>
       </nav>
-    </div></header>
+      ${!home && html`<button className="iconbtn only-sm" onClick=${() => setSm(!sm)} aria-label="Новый поиск" aria-expanded=${sm}>${Icon.search}</button>`}
+      <${ThemeToggle} />
+    </div>
+    ${sm && !home && html`<div className="hd-sm"><${SearchBox} compact autoFocus=${true} /></div>`}
+    </header>
     <main className="wrap">${view}</main>
     <footer className="bottom"><div className="wrap ft">
-      <img src="/static/logo.svg" alt="" />
-      <span className="caps">Aurum Foresight System</span>
+      <img className="logo-light" src="/static/logo.svg" alt="" /><img className="logo-dark" src="/static/logo-foil.svg" alt="" />
+      <span className="k">Aurum Foresight System</span>
       <span>Поиск слабых технологических сигналов · <a href="#/model">методология</a> · <a href="/docs">API</a></span>
     </div></footer>
   <//>`;

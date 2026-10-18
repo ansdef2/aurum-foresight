@@ -228,10 +228,10 @@ def figures(res, df, p):
         print("matplotlib не установлен — рисунки пропущены (pip install matplotlib)")
         return
     os.makedirs(FIG, exist_ok=True)
-    # Палитра брендбука Aurum Foresight System: пергамент, чернила, латунь. Шрифт Montserrat, если установлен.
+    # Палитра брендбука Aurum Foresight System: пергамент, чернила, латунь. Шрифт Manrope, если установлен.
     from matplotlib import font_manager
     parchment, ink, accent, grey = "#EFEBDF", "#121B27", "#A8811F", "#8C8E95"
-    family = "Montserrat" if any(f.name == "Montserrat" for f in font_manager.fontManager.ttflist) else "DejaVu Sans"
+    family = "Manrope" if any(f.name == "Manrope" for f in font_manager.fontManager.ttflist) else "DejaVu Sans"
     plt.rcParams.update({"font.size": 12, "font.family": family, "axes.spines.top": False,
                          "axes.spines.right": False, "figure.facecolor": parchment, "axes.facecolor": parchment,
                          "savefig.facecolor": parchment, "text.color": ink, "axes.labelcolor": ink,
